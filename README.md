@@ -15,7 +15,7 @@ La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. 
 * Un capteur de température analogique de type NTC.
 * Un module bluetooth utilisable via les broches UART du microcontrôleur (les broches Rx et Tx).
 
-La bibliothèque part de cette configuration. Le code généré permet avant tout de piloter une machine Senseo avec ce shield, mais il est possible d'utiliser la bibliothèque pour d'autres configurations. Reprécisons que la bibliothèque ne fonctionne que sur les microcontrôleurs AtMega328 et ses variantes (AtMega328P, AtMega328P-PU, etc), ainsi que sur les AtMega168 et ses variantes. La bibliothèque est de type P.O.O (Programmation Orientée Objet). Voir le sketch dans le dossier "examples" de ce répertoire.
+La bibliothèque part de cette configuration. Le code généré permet avant tout de piloter une machine Senseo avec ce shield, mais il est possible d'utiliser la bibliothèque pour d'autres configurations. Reprécisons que la bibliothèque ne fonctionne que sur les microcontrôleurs AtMega328 et ses variantes (AtMega328P, AtMega328P-PU, etc), ainsi que sur les AtMega168 et ses variantes. La bibliothèque est de type P.O.O (Programmation Orientée Objet). On peut l'implémenter de plusieurs façons. Voir les sketches dans le dossier "examples" de ce répertoire. 
 
 
 </div>
