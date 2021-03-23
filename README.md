@@ -1,7 +1,7 @@
 # <div align="center"> <ins>Bibliothèque SenseoUno</ins> </div>
 ## Bibliothèque pour le pilotage d'une machine à café Senseo à partir d'une carte Arduino Uno. Attention : la bibliothèque fonctionne *uniquement* pour les microcontrôleurs basés sur l'Arduino Uno.
-<div style="text-align: justify">
-### <ins>Note :</ins> La bibliothèque est implémentée pour être utilisée à partir d'une carte Arduino Uno. Elle est faite pour être plus rapide que la bibliothèque Arduino lors de l'exécution du programme, d'où sa non-portabilité. En revanche, le référencement aux différents ports et registres est masqué par la bibliothèque. L'utilisateur "classique" ne sera donc pas dépaysé, et pourra coder son programme comme n'importe quel programme Arduino.
+
+### <div style="text-align: justify"><ins>Note :</ins> La bibliothèque est implémentée pour être utilisée à partir d'une carte Arduino Uno. Elle est faite pour être plus rapide que la bibliothèque Arduino lors de l'exécution du programme, d'où sa non-portabilité. En revanche, le référencement aux différents ports et registres est masqué par la bibliothèque. L'utilisateur "classique" ne sera donc pas dépaysé, et pourra coder son programme comme n'importe quel programme Arduino.</div>
 
 L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
@@ -16,4 +16,4 @@ La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. 
 
 La bibliothèque part de cette configuration. Le code généré permet avant tout de piloter une machine Senseo avec ce shield, mais il est possible d'utiliser la bibliothèque pour d'autres configurations. Reprécisons que la bibliothèque ne fonctionne que sur les microcontrôleurs AtMega328 et ses variantes (AtMega328P, AtMega328P-PU, etc), ainsi que sur les AtMega168 et ses variantes. La bibliothèque est de type P.O.O (Programmation Orientée Objet). Voir le sketch dans le dossier "examples" de ce répertoire.
 
-</div>
+
