@@ -25,7 +25,7 @@ La bibliothèque part de cette configuration. Le code généré permet avant tou
 * Senseo.setHeat(resChauffante) | Pour configurer en sortie digitale la résistance chauffante sur l'instance Senseo.
 * Senseo.setLevels(niveau1, niveau2) | Pour configurer en entrées digitales les deux capteurs de niveau d'eau, pour une tasse et pour deux tasses, sur l'instance Senseo.
 * Senseo.setLevel(niveau) | Pour configurer en entrée digitale un capteur de niveau d'eau sur l'instance Senseo.
-* Senseo.setCaptTemp(captTemp) | Pour configurer en entrée analogique un capteur de température sur l'instance Senseo.
+* Senseo.setTempSensor(captTemp) | Pour configurer en entrée analogique un capteur de température sur l'instance Senseo.
 
 
 </div>
