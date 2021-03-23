@@ -1,9 +1,9 @@
 # <div align="center"> <ins>Bibliothèque SenseoUno :</ins> </div>
 
-## <div align=justify> Bibliothèque pour le pilotage d'une machine à café Senseo à partir d'une carte Arduino Uno. Attention : la bibliothèque fonctionne *uniquement* pour les microcontrôleurs basés sur l'Arduino Uno.
+## <div align=justify>Bibliothèque pour le pilotage d'une machine à café Senseo à partir d'une carte Arduino Uno. Attention : la bibliothèque fonctionne *uniquement* pour les microcontrôleurs basés sur l'Arduino Uno.</div>
 
-### <ins>Note :</ins> La bibliothèque est implémentée pour être utilisée à partir d'une carte Arduino Uno. Elle est faite pour être plus rapide que la bibliothèque Arduino lors de l'exécution du programme, d'où sa non-portabilité. En revanche, le référencement aux différents ports et registres est masqué par la bibliothèque. L'utilisateur "classique" ne sera donc pas dépaysé, et pourra coder son programme comme n'importe quel programme Arduino.
-
+### <div align=justify><ins>Note :</ins> La bibliothèque est implémentée pour être utilisée à partir d'une carte Arduino Uno. Elle est faite pour être plus rapide que la bibliothèque Arduino lors de l'exécution du programme, d'où sa non-portabilité. En revanche, le référencement aux différents ports et registres est masqué par la bibliothèque. L'utilisateur "classique" ne sera donc pas dépaysé, et pourra coder son programme comme n'importe quel programme Arduino.</div>
+<div align=justify>
 L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
 La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
