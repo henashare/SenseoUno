@@ -1,4 +1,4 @@
-# <div align="center"> <ins>Bibliothèque SenseoUno</ins> </div>
+# <div align="center"> <ins>Bibliothèque SenseoUno :</ins> </div>
 <div align=justify>
 ## Bibliothèque pour le pilotage d'une machine à café Senseo à partir d'une carte Arduino Uno. Attention : la bibliothèque fonctionne *uniquement* pour les microcontrôleurs basés sur l'Arduino Uno.
 
