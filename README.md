@@ -32,8 +32,8 @@
 * *Senseo*.readLvl() | Pour lire l'état du capteur de niveau d'eau. Cette fonction est utilisée lorsqu'il n'y a qu'un seul capteur de niveau d'eau sur la machine.
 * *Senseo*.readLvl1() | Pour lire l'état du capteur de niveau d'eau pour une tasse. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
 * *Senseo*.readLvl2() | Pour lire l'état du capteur de niveau d'eau pour deux tasses. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
-* *Senseo*.readTemp() | Pour lire la valeur analogique en 10-bit du capteur de température. Cette méthode retourne une valeur flottante / réelle entre 0 et 1023 correspondant à la température mesurée par le capteur.
-* *Senseo*.readTemp(valeurTemp) | Pour lire la valeur analogique en 10-bit du capteur de température. Cette méthode demande une variable flottante / réelle en argument. Elle y stocke une valeur entre 0 et 1023 correspondant à la température mesurée par le capteur.
+* *Senseo*.readTemp() | Pour lire la valeur analogique en 10-bits du capteur de température. Cette méthode retourne une valeur flottante / réelle entre 0 et 1023 correspondant à la température mesurée par le capteur.
+* *Senseo*.readTemp(valeurTemp) | Pour lire la valeur analogique en 10-bits du capteur de température. Cette méthode demande une variable flottante / réelle en argument. Elle y stocke une valeur entre 0 et 1023 correspondant à la température mesurée par le capteur.
 * *Senseo*.activatePump() | Pour activer la pompe.
 * *Senseo*.shutdownPump() | Pour désactiver la pompe.
 * *Senseo*.activateHeat() | Pour activer la résistance chauffante.
