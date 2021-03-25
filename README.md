@@ -4,7 +4,8 @@
 
 ### <div align=justify><ins>Note :</ins> La bibliothèque est implémentée pour être utilisée à partir d'une carte Arduino Uno. Elle est faite pour être plus rapide que la bibliothèque Arduino lors de l'exécution du programme, d'où sa non-portabilité. En revanche, le référencement aux différents ports et registres est masqué par la bibliothèque. L'utilisateur "classique" ne sera donc pas dépaysé, et pourra coder son programme comme n'importe quel programme Arduino. Le code sera plus rapide pour les fonctions de la bibliothèque utiisées, mais ce gain de rapidité implique que la bibliothèque n'est pas utilisable sur toutes les cartes. Bien que ce ne soit pas à l'ordre du jour, d'autres bibliothèques du même type pourraient cependant voir le jour tôt ou tard afin de pouvoir exporter le code sur d'autres cartes.</div>
 <div align=justify>
-L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp. La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
+L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
+La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
 * Pilotage d'une résistance chauffante 230V via relais.
 * Pilotage d'une pompe 230V via relais.
 * Utilisation de trois boutons-poussoirs NO.
