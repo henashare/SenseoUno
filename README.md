@@ -6,7 +6,7 @@
 <div align=justify>
 L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
-\La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
+La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
 * Pilotage d'une résistance chauffante 230V via relais.
 * Pilotage d'une pompe 230V via relais.
 * Utilisation de trois boutons-poussoirs NO.
