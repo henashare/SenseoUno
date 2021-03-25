@@ -26,6 +26,27 @@ La bibliothèque part de cette configuration. Le code généré permet avant tou
 * Senseo.setLevels(niveau1, niveau2) | Pour configurer en entrées digitales les deux capteurs de niveau d'eau, pour une tasse et pour deux tasses, sur l'instance Senseo.
 * Senseo.setLevel(niveau) | Pour configurer en entrée digitale un capteur de niveau d'eau sur l'instance Senseo.
 * Senseo.setTempSensor(captTemp) | Pour configurer en entrée analogique un capteur de température sur l'instance Senseo.
+* Senseo.readButton1C() | Pour lire l'état du bouton-poussoir pour une tasse.
+* Senseo.readButton2C() | Pour lire l'état du bouton-poussoir pour deux tasses.
+* Senseo.readButtonMain() | Pour lire l'état du bouton-poussoir central.
+* Senseo.readLvl() | Pour lire l'état du capteur de niveau d'eau. Cette fonction est utilisée lorsqu'il n'y a qu'un seul capteur de niveau d'eau sur la machine.
+* Senseo.readLvl1() | Pour lire l'état du capteur de niveau d'eau pour une tasse. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
+* Senseo.readLvl2() | Pour lire l'état du capteur de niveau d'eau pour deux tasses. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
+* Senseo.readTemp() | Pour lire la valeur analogique en 10-bit du capteur de température. Cette méthode retourne une valeur flottante / réelle entre 0 et 1023 correspondant à la température mesurée par le capteur.
+* Senseo.readTemp(valeurTemp) | Pour lire la valeur analogique en 10-bit du capteur de température. Cette méthode demande une variable flottante / réelle en argument. Elle y stocke une valeur entre 0 et 1023 correspondant à la température mesurée par le capteur.
+* Senseo.activatePump() | Pour activer la pompe.
+* Senseo.shutdownPump() | Pour désactiver la pompe.
+* Senseo.activateHeat() | Pour activer la résistance chauffante.
+* Senseo.shutdownHeat() | Pour désactiver la résistance chauffante.
+* Senseo.activateLed() | Pour activer la led unique renseignée dans l'instance de classe SenseoUno.
+* Senseo.shutdownLed() | Pour désactiver la led unique renseignée dans l'instance de classe SenseoUno.
+* Senseo.activateR() | Pour activer en digital la led rouge de la led RGB.
+* Senseo.activateG() | Pour activer en digital la led verte de la led RGB.
+* Senseo.activateB() | Pour activer en digital la led bleue de la led RGB.
+* Senseo.shutdownR() | Pour désactiver en digital la led rouge de la led RGB.
+* Senseo.shutdownG() | Pour désactiver en digital la led verte de la led RGB.
+* Senseo.shutdownB() | Pour désactiver en digital la led bleue de la led RGB.
+* Senseo.analogWriteRGB(valR, valG, valB) | Pour activer la led RGB en mode analogique PWM. Cette méthode demande une valeur entre 0 et 255 pour chacune des leds. Cette méthode permet de générer un éclairage de la led avec un large panel de couleurs.
 
 
 </div>
