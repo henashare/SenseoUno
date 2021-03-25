@@ -6,7 +6,7 @@
 <div align=justify>
 L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
-    La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
+   La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
 * Pilotage d'une résistance chauffante 230V via relais.
 * Pilotage d'une pompe 230V via relais.
 * Utilisation de trois boutons-poussoirs NO.
@@ -15,7 +15,7 @@ L'implémentation de la bibliothèque est disponible dans les fichiers sources :
 * Un capteur de température analogique de type NTC.
 * Un module bluetooth utilisable via les broches UART du microcontrôleur (les broches Rx et Tx).
 
-    La bibliothèque part de cette configuration. Le code généré permet avant tout de piloter une machine Senseo avec ce shield, mais il est possible d'utiliser la bibliothèque pour d'autres configurations. Reprécisons que la bibliothèque ne fonctionne que sur les microcontrôleurs AtMega328 et ses variantes (AtMega328P, AtMega328P-PU, etc), ainsi que sur les AtMega168 et ses variantes. La bibliothèque est de type P.O.O (Programmation Orientée Objet). On peut l'implémenter de plusieurs façons. Nous présentons un peu plus loin dans ce documents quelques sketchs d'exemples. Ici, nous présentons toutes les méthodes utilisables par l'utilisateur à partir d'une instance de classe déclarée en début de sketch. Appelons cette instance *Senseo*. Sur cette instance, les méthodes utilisables sont les suivantes :
+   La bibliothèque part de cette configuration. Le code généré permet avant tout de piloter une machine Senseo avec ce shield, mais il est possible d'utiliser la bibliothèque pour d'autres configurations. Reprécisons que la bibliothèque ne fonctionne que sur les microcontrôleurs AtMega328 et ses variantes (AtMega328P, AtMega328P-PU, etc), ainsi que sur les AtMega168 et ses variantes. La bibliothèque est de type P.O.O (Programmation Orientée Objet). On peut l'implémenter de plusieurs façons. Nous présentons un peu plus loin dans ce documents quelques sketchs d'exemples. Ici, nous présentons toutes les méthodes utilisables par l'utilisateur à partir d'une instance de classe déclarée en début de sketch. Appelons cette instance *Senseo*. Sur cette instance, les méthodes utilisables sont les suivantes :
 * *Senseo*.setRGB(ledRouge, ledVerte, ledBleue) | Pour configurer 3 leds ou une led RGB en sorties digitales sur l'instance Senseo.
 * *Senseo*.setAnalogicRGB(ledRouge, ledVerte, ledBleue) | Pour configurer 3 leds ou une led RGB en sorties PWM sur l'instance Senseo.
 * *Senseo*.setLed(led) | Pour configurer une seule led en sortie digitale sur l'instance Senseo.
@@ -51,7 +51,7 @@ L'implémentation de la bibliothèque est disponible dans les fichiers sources :
 * *Senseo*.analogWriteRGB(valR, valG, valB) | Pour activer la led RGB en mode analogique PWM. Cette méthode demande une valeur entre 0 et 255 pour chacune des leds. Cette méthode permet de générer un éclairage de la led avec un large panel de couleurs.
 * *Senseo*.analogEndRGB() | Pour désactiver la led RGB en mode analogique PWM.
 
-    Dans le dossier examples de cette librairie, nous avons écrit quelques sketchs pour la configuration et l'utilisation de la bibliothèque. Ces sketchs sont accessibles directement depuis l'IDE Arduino, dans l'onglet du menu déroulant Fichier->Exemples->SenseoUno. Voici une liste des sketchs présents et ce qu'ils permettent de faire :
+   Dans le dossier examples de cette librairie, nous avons écrit quelques sketchs pour la configuration et l'utilisation de la bibliothèque. Ces sketchs sont accessibles directement depuis l'IDE Arduino, dans l'onglet du menu déroulant Fichier->Exemples->SenseoUno. Voici une liste des sketchs présents et ce qu'ils permettent de faire :
 * shield_settings.ino | Sketch de configuration minimale sur base des raccordements du shield à partir duquel la bibliothèque a été implémentée. Pour un raccordement différent, voir le sketch "custom_settings.ino".
 * custom_settings.ino | Sketch de configuration personnalisé. Exemple recommandé pour voir comment faire une configuration complète. Si la configuration est la même que sur le shield à partir duquel la bibliothèque a été implémentée, une simple déclaration de l'instance de classe SenseoUno est suffisante. Dans ce cas, voir l'exemple "shield_settings.ino".
 
