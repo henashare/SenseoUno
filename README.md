@@ -11,7 +11,7 @@ La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. 
 * Pilotage d'une pompe 230V via relais.
 * Utilisation de trois boutons-poussoirs NO.
 * Vérifications de niveaux d'eau via capteurs à effet Hall : soit un seul niveau, soit deux niveaux (une tasse ou deux tasses).
-* Une LED de type RGB, ou trois LEDs à couleur unique.
+* Une seule LED de type RGB, ou une seule LED à couleur unique. Il n'y a qu'une seule LED sur la plupart modèles Senseo. <ins>Note :</ins> il est possible de détourner les méthodes de la led RGB pour gérer trois leds à couleur unique. Voir les explications des différentes méthodes qui se situent plus loin dans ce document.
 * Un capteur de température analogique de type NTC.
 * Un module bluetooth utilisable via les broches UART du microcontrôleur (les broches Rx et Tx).
 
