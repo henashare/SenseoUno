@@ -1,0 +1,84 @@
+#######################################
+# Syntax Coloring Map SenseoUno
+#######################################
+
+#######################################
+# Class (KEYWORD1)
+#######################################
+
+SenseoUno	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+setRGB	KEYWORD2
+setAnalogRGB	KEYWORD2
+setLed	KEYWORD2
+set3Buttons	KEYWORD2
+setPower	KEYWORD2
+setPump	KEYWORD2
+setHeat	KEYWORD2
+setLevels	KEYWORD2
+setLevel	KEYWORD2
+setTempSensor	KEYWORD2
+readButton1C	KEYWORD2
+readButton2C	KEYWORD2
+readButtonMain	KEYWORD2
+readLvl	KEYWORD2
+readLvl1	KEYWORD2
+readLvl2	KEYWORD2
+readAnalogTemp	KEYWORD2
+activatePump	KEYWORD2
+shutdownPump	KEYWORD2
+activateHeat	KEYWORD2
+shutdownHeat	KEYWORD2
+activateLed	KEYWORD2
+shutdownLed	KEYWORD2
+activateRGB	KEYWORD2
+shutdownRGB	KEYWORD2
+activateR	KEYWORD2
+shutdownR	KEYWORD2
+activateG	KEYWORD2
+shutdownG	KEYWORD2
+activateB	KEYWORD2
+shutdownB	KEYWORD2
+analogWriteRGB	KEYWORD2
+analogShutdownRGB	KEYWORD2
+startChrono	KEYWORD2
+startChrono1	KEYWORD2
+startChrono2	KEYWORD2
+isCountdown	KEYWORD2
+isCountdown1	KEYWORD2
+isCountdown2	KEYWORD2
+stopChrono	KEYWORD2
+stopChronos	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+D0	LITERAL1
+D1	LITERAL1
+D2	LITERAL1
+D3	LITERAL1
+D4	LITERAL1
+D5	LITERAL1
+D6	LITERAL1
+D7	LITERAL1
+D8	LITERAL1
+D9	LITERAL1
+D10	LITERAL1
+D11	LITERAL1
+D12	LITERAL1
+D13	LITERAL1
+A0	LITERAL1
+A1	LITERAL1
+A2	LITERAL1
+A3	LITERAL1
+A4	LITERAL1
+A5	LITERAL1
+HIGH	LITERAL1
+LOW	LITERAL1
+EMPTY_INSTANCE	LITERAL1
+SHIELD_INSTANCE	LITERAL1
+CHRONO_ENABLE	LITERAL1
+CHRONOS_ENABLE	LITERAL1
