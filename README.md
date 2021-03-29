@@ -19,15 +19,18 @@
 
 ### 1. Déclarer l'instance de classe SenseoUno :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La bibliothèque propose deux façons de créer une instance de classe SenseoUno. Il y a deux sketches d'exemples "shield_settings.ino" et "custom_settings.ino" illustrant ces deux possibilités. Précisons que dans tous les cas de figure, l'instance doit être créée globalement en haut de sketch. Si l'instance est déclarée dans la fonction setup() ou dans la fonction loop() (ou dans une autre fonction), elle ne pourra pas être utilisée ailleurs. Hors l'utilisateur aura *a priori* besoin d'avoir accès à l'instance partout dans le sketch. Voici la première possibilité :
-* SenseoUno MaSenseo;
+* SenseoUno *MaSenseo*;
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cette première possibilité configure par défaut la machine à café sur base du shield. Notons que cette ligne de code est minimaliste puisque deux termes seulement sont utilisés. Le premier terme est le nom de la classe, qui correspond à un "type" ; le second terme est le nom de l'instance, qui correspond au nom de la "variable" de "type" SenseoUno. C'est un peu comme déclarer une variable : on déclare d'abord le type (int, float, char, etc) et puis le nom de la variable. Nous verrons à la fin de cette première partie la configuration faite par défaut dans le cas du shield. Mais l'utilisateur peut très bien vouloir faire sa propre configuration. C'est la raison pour laquelle il existe une seconde possibilité pour créer son instance de classe SenseoUno. La voici :
-* SenseoUno MachineSenseo(EMPTY_INSTANCE);
-* SenseoUno Senseo(SHIELD_INSTANCE);
+* SenseoUno *MachineSenseo*(EMPTY_INSTANCE);
+* SenseoUno *Senseo*(SHIELD_INSTANCE);
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cette seconde possibilité permet de créer une instance sous deux variantes. La première variante est une instance vide à configurer entièrement ; dans ce cas il faut renseigner la macro EMPTY_INSTANCE (ou la valeur 0 ou false) lors de la déclaration. La seconde variante est un synonyme de la première possibilité : elle configure par défaut l'instance sur base du shield. Dans ce cas, on peut soit utiliser la première variante, soit utiliser la seconde en renseignant la macro SHIELD_INSTANCE (ou la valeur 1 ou true).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La configuration par défaut du shield se concentre uniquement sur les éléments essentiels. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La configuration par défaut du shield se concentre uniquement sur les éléments essentiels. Ces éléments sont (1) la pompe déclarée sur la broche 6 ; (2) la résistance chauffante déclarée sur la broche 5 ; (3) le capteur de température déclaré sur la broche A0 ; (4) les trois boutons-poussoirs déclarés sur les broches 2, 3 et 4 ; (5) la led RGB déclarée sur les broches 9, 10 et 11 ; (6) un premier capteur de niveau d'eau sur la broche 7, et un second capteur de niveau d'eau sur la broche 8 ; (7) une configuration pour la communication série (par exemple via un module bluetooth) sur les broches 0 (RX) et 1 (TX). 
+<ins>Note :</ins> la communication série de cette bibliothèque fonctionne comme la bibliothèque Serial. Par défaut, le nombre de bauds est de 9600.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La librairie ne configure pas tout par défaut, et quelques options sont à implémenter par l'utilisateur, shield ou non. Ces éléments sont les chronos et le mode de mise en veille. Les points 8 et 9 de ce document expliquent comment intégrer ces fonctionnalités dans le programme principal. Le point 10 reprend également une liste de tous les sketches d'exemple et de ce à quoi ils servent. L'utilisateur peut retourner vers cette liste pour savoir quels sketches d'exemple ouvrir pour découvrir l'utilisation des différentes fonctionnalités.
 
 ### 2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Une machine Senseo contient en général un seul voyant lumineux, à partir duquel il renseigne un ensemble d'informations à l'utilisateur. Ces informations peuvent être diverses : indiquer à l'utilisateur que l'eau est prête et qu'il n'a plus qu'à choisir le nombre de tasses qu'il veut servir, indiquer au contraire que l'eau est toujours en train de chauffer, indiquer qu'il est temps de faire un détartrage, etc. Ce composant est donc essentiel, et la librairie propose plusieurs méthodes pour l'utiliser. Notons que la librairie permet de configurer et piloter soit une simple led, soit une led RGB (ou un ensemble de trois leds). La bibliothèque ne permet pas de configurer et commander deux leds, ou plus d'une led RGB, ou plus de trois leds.
@@ -55,7 +58,7 @@
 
 ### 3. Les boutons-poussoirs (BP) :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Une machine à café Senseo dispose de trois boutons-poussoirs. Un BP central et deux autres BP. Le BP central sert (*a minima*) à lancer le cycle de pompage et chauffage de l'eau ; les deux autres servent à sélectionner le nombre de tasses à servir (soit une tasse soit deux tasses). Ils sont eux aussi essentiels à la machine à café.
-<ins>Note :</ins> Il est recommandé de bien réfléchir à l'endroit où l'on place les boutons-poussoirs. La libraire offre la possibilité d'intégrer un mode de mise en veille. Il sera possible d'activer et de faire sortir la machine de la mise en veille grâce (entre autres) à un appui sur un BP. Pour pouvoir faire cela, la librairie prévoit que l'utilisateur installe au minimum un des boutons-poussoirs sur l'une de ces broches de l'Arduino Uno : 0, 1, 2, 3, 4, 5, 6, 7.
+<ins>Note :</ins> Il est recommandé de bien réfléchir à l'endroit où l'on place les boutons-poussoirs. La bibliothèque offre la possibilité d'intégrer un mode de mise en veille. Il sera possible d'activer et de faire sortir la machine de la mise en veille grâce (entre autres) à un appui sur un BP. Pour pouvoir faire cela, la librairie prévoit que l'utilisateur installe au minimum un des boutons-poussoirs sur l'une de ces broches de l'Arduino Uno : 0, 1, 2, 3, 4, 5, 6, 7.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il y a une méthode permettant de configurer les boutons-poussoirs, qui doit être utilisée durant l'initialisation dans la fonction setup(). Cette méthode permet de déclarer les broches sur lesquelles les BP vont être lus. Elle les déclare aussi automatiquement en entrée digitale. Notons que l'instance basée sur notre shield configure par défaut les 3 boutons-poussoirs sur les broches 2, 3 et 4 ; dans ce cas, cette méthode n'a donc pas besoin d'être utilisée.
 * *Senseo*.set3Buttons(BP1, BP2, BP_central) | Pour configurer les 3 BP de la machine sur l'instance Senseo.
@@ -91,10 +94,10 @@
 * *Senseo*.readLvl1() | Pour lire l'état du capteur de niveau d'eau pour une tasse. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
 * *Senseo*.readLvl2() | Pour lire l'état du capteur de niveau d'eau pour deux tasses. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
 
-<ins>Note :</ins>Notons malgré tout que les méthodes *Senseo*.readLvl() et *Senseo*.readLvl1() sont des synonymes. Ces deux méthodes s'appliquent à la même broche, qui est à la fois la seule broche déclarée avec la méthode *Senseo*.setLevel() et la première broche déclarée avec la méthode *Senseo*.setLevels(niveau1, niveau2).
+<ins>Note :</ins>Notons malgré tout que les méthodes *Senseo*.readLvl() et *Senseo*.readLvl1() sont des synonymes. Ces deux méthodes s'appliquent à la même broche, qui est à la fois la seule broche déclarée avec la méthode *Senseo*.setLevel() et la première broche déclarée avec la méthode *Senseo*.setLevels(niveau1, niveau2). Dans le cas de la configuration basée sur le shield, la broche commune à ces deux méthodes est la broche 7.
 
 ### 6. Le capteur de température :
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorsque la résistance chauffante est active, la température de l'eau augmente. Il faut pouvoir arrêter la résistance chauffante lorsque la température a atteint un certain seuil (en général autour de 95°C). Il faut pour cela un capteur de température, qui est en général un capteur analogique. La librairie permet de configurer et récupérer les valeurs d'un seul capteur analogique. Il existe plusieurs modèles de machine Senseo, et tous les modèles n'auront pas nécessairement les mêmes sortes de capteurs de température. Voilà pourquoi la libraire ne saurait renseigner directement les valeurs en degrés. Elle retourne par contre une valeur analogique entre 0 et 1023. La méthode préconisée est de partir de cette valeur pour définir un seuil vers lequel la température n'est ni trop élevée ni trop faible.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorsque la résistance chauffante est active, la température de l'eau augmente. Il faut pouvoir arrêter la résistance chauffante lorsque la température a atteint un certain seuil (en général autour de 95°C). Il faut pour cela un capteur de température, qui est en général un capteur analogique. La librairie permet de configurer et récupérer les valeurs d'un seul capteur analogique. Il existe plusieurs modèles de machine Senseo, et tous les modèles n'auront pas nécessairement les mêmes sortes de capteurs de température. Voilà pourquoi la bibliothèque ne saurait renseigner directement les valeurs en degrés. Elle retourne par contre une valeur analogique entre 0 et 1023. La méthode préconisée est de partir de cette valeur pour définir un seuil vers lequel la température n'est ni trop élevée ni trop faible.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il faut commencer par configurer le capteur analogique lors de l'initialisation dans la fonction setup(). Pour cela, on utilise une méthode par laquelle on renseigne la broche sur laquelle est raccordé le capteur. La méthode se charge ensuite de configurer la broche en entrée analogique. Notons que le capteur doit forcément être branché sur une des broches analogiques suivantes de l'Arduino Uno : A0, A1, A2, A3, A4, A5. Notons ensuite que la configuration est faite par défaut dans le cas de l'instance basée sur le shield, et qu'il n'est pas nécessaire dans ce cas d'utiliser cette méthode.
 * *Senseo*.setTempSensor(captTemp) | Pour configurer en entrée analogique un capteur de température sur l'instance Senseo.
@@ -110,6 +113,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dans le dossier examples de cette librairie, nous avons écrit quelques sketchs pour la configuration et l'utilisation de la bibliothèque. Ces sketchs sont accessibles directement depuis l'IDE Arduino, dans l'onglet du menu déroulant Fichier->Exemples->SenseoUno. Voici une liste des sketchs présents et ce qu'ils permettent de faire :
 * shield_settings.ino | Sketch de configuration minimale sur base des raccordements du shield à partir duquel la bibliothèque a été implémentée. Pour un raccordement différent, voir le sketch "custom_settings.ino".
 * custom_settings.ino | Sketch de configuration personnalisé. Exemple recommandé pour voir comment faire une configuration complète. Si la configuration est la même que sur le shield à partir duquel la bibliothèque a été implémentée, une simple déclaration de l'instance de classe SenseoUno est suffisante. Dans ce cas, voir l'exemple "shield_settings.ino".
+
+### 9. La mise en veille :
+
+### 10. La liste des sketches d'exemple :
+* *custom_settings.ino* | Illustre comment créer et configurer une instance vide de la classe SenseoUno.
+* *ledRGB_PWM.ino* | Montre comment utiliser une led RGB en mode PWM.
+* *read_temperature.ino* | Montre comment récupérer une valeur analogique en 10-bits sur un capteur analogique (comme par exemple un capteur de temérature).
+* *shield_settings.ino* | Illustre comment créer une instance de la classe SenseoUno basée sur le shield.
+* *single_chrono.ino* | Cet exemple montre comment déclarer, configurer et utiliser un chrono unique.
+* *two_chronos.ino* | Cet exemple montre comment déclarer, configurer et utiliser les deux chronos de la librairie.
 
 
 </div>
