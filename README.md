@@ -6,7 +6,7 @@
 <div align=justify>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
-<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre les possibilités suivantes :
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre des possibilités pour le pilotage d'un machine à café Senseo. Ces possibilités sont les suivantes :
 * Pilotage d'une résistance chauffante 230V via relais.
 * Pilotage d'une pompe 230V via relais.
 * Utilisation de trois boutons-poussoirs NO.
