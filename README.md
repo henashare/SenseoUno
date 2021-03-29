@@ -24,7 +24,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plusieurs cas de figure ont été envisagés. Soit l'utilisateur utilise une seule led, soit il utilise une led RGB. Notons que la led RGB consiste en trois leds ayant chacune une couleur différente. L'utilisateur peut donc utiliser une led RGB ou trois leds différentes. Pour la led RGB (ou une équivalence mise en place par l'utilisateur avec trois leds), deux possibilités pour la commande. La commande peut se faire en mode digital ou en mode analogique. Le mode digital permet deux états sur la led : soit elle est allumée soit elle est éteinte. Le mode analogique permet sur une led RGB de faire varier les intensités et couleurs, et donc de produire un panel de couleurs plus large. Par contre, le mode PWM implique que la led RGB occupe trois broches PWM sur l'Arduino Uno. Le choix ne peut pas être fait au hasard, puisque ces broches sont au nombre de six. Le mode PWM pour la led RGB implique qu'elle occupe trois broches parmi les suivantes : 3, 5, 6, 9, 10, 11. Les broches PWM sont signalées par un tilde (~) sur l'Arduino Uno.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Les premières méthodes sont à utiliser lors de l'initialisation, dans la fonction setup(). Elles permettent de sélectionner les broches sur lesquelles la simple led ou la led RGB est utilisée. Elles permettent aussi de la configurer soit en sortie digitale, soit en sortie analogique. Voici les trois méthodes utilisables pour la configuration du voyant lumineux choisi par l'utilisateur (rappelons que l'instance basée sur notre shield configure par défaut le voyant lumineux comme une led RGB en mode analogique) :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Les premières méthodes sont à utiliser lors de l'initialisation, dans la fonction setup(). Elles permettent de sélectionner les broches sur lesquelles la simple led ou la led RGB est utilisée. Elles permettent aussi de la configurer soit en sortie digitale, soit en sortie analogique. Voici les trois méthodes utilisables pour la configuration du voyant lumineux choisi par l'utilisateur (rappelons que l'instance basée sur notre shield configure par défaut le voyant lumineux comme une led RGB en mode analogique, et qu'il n'y a pas besoin d'utiliser une de ces méthodes) :
 * *Senseo*.setLed(led) | Pour configurer une seule led en sortie digitale sur l'instance Senseo.
 * *Senseo*.setRGB(ledRouge, ledVerte, ledBleue) | Pour configurer 3 leds ou une led RGB en sorties digitales sur l'instance Senseo.
 * *Senseo*.setAnalogRGB(ledRouge, ledVerte, ledBleue) | Pour configurer 3 leds ou une led RGB en sorties PWM sur l'instance Senseo.
@@ -45,8 +45,9 @@
 
 ### 3. Les boutons-poussoirs (BP) :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Une machine à café Senseo dispose de trois boutons-poussoirs. Un BP central et deux autres BP. Le BP central sert (*a minima*) à lancer le cycle de pompage et chauffage de l'eau ; les deux autres servent à sélectionner le nombre de tasses à servir (soit une tasse soit deux tasses). Ils sont eux aussi essentiels à la machine à café.
+<ins>Note :</ins> Il est recommandé de bien réfléchir à l'endroit où l'on place les boutons-poussoirs. La libraire offre la possibilité d'intégrer un mode de mise en veille. Il sera possible d'activer et de faire sortir la machine de la mise en veille grâce (entre autres) à un appui sur un BP. Pour pouvoir faire cela, la librairie prévoit que l'utilisateur installe au minimum un des boutons-poussoirs sur l'une de ces broches de l'Arduino Uno : 0, 1, 2, 3, 4, 5, 6, 7.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il y a une méthode permettant de configurer les boutons-poussoirs. Cette méthode permet de déclarer les broches sur lesquelles les BP vont être lus. Elle les déclare aussi automatiquement en entrée digitale :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il y a une méthode permettant de configurer les boutons-poussoirs, qui doit être utilisée durant l'initialisation dans la fonction setup(). Cette méthode permet de déclarer les broches sur lesquelles les BP vont être lus. Elle les déclare aussi automatiquement en entrée digitale. Notons que l'instance basée sur notre shield configure par défaut les 3 boutons-poussoirs sur les broches 2, 3 et 4 ; dans ce cas, cette méthode n'a donc pas besoin d'être utilisée.
 * *Senseo*.set3Buttons(BP1, BP2, BP_central) | Pour configurer les 3 BP de la machine sur l'instance Senseo.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il y a enfin trois méthodes permettant de lire les états des boutons-poussoirs. Elles permettent de lire l'état d'un BP parmi les trois. Ces méthodes retournent une valeur booléenne en fonction du résultat de la lecture :
@@ -55,22 +56,44 @@
 * *Senseo*.readButtonMain() | Pour lire l'état du bouton-poussoir central --> 1 si état haut, 0 si état bas.
 
 ### 4. Les éléments de puissance | Pompe et résistance chauffante :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Une machine Senseo intègre nécessairement une pompe pour faire circuler l'eau, et une résistance chauffante pour chauffer l'eau à température. Ces deux éléments sont des éléments de puissance (ils fonctionnent avec une tension alternative, en général 230V). La librairie permet de les configurer et de les piloter comme de simples sorties digitales (soit activés, soit désactivés).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La configuration se fait durant l'initialisation dans la fonction setup(), et peut se faire via trois méthodes. Soit une méthode pour configurer les deux en même temps, soit une méthode pour la pompe et une méthode pour la résistance chauffante. Pour chacune de ces méthodes, il faut renseigner la ou les broches sur lesquelles sont raccordés la pompe et la résistance chauffante. Elles font automatiquement la configuration de la ou des broches renseignées en sorties digitales. Sur l'instance basée sur le shield, la configuration est déjà faite par défaut et ces méthodes n'ont pas besoin d'être utilisées.
 * *Senseo*.setPower(pompe, resChauffante) | Pour configurer en sorties digitales la pompe et la résistance chauffante sur l'instance Senseo.
 * *Senseo*.setPump(pompe) | Pour configurer en sortie digitale la pompe sur l'instance Senseo.
 * *Senseo*.setHeat(resChauffante) | Pour configurer en sortie digitale la résistance chauffante sur l'instance Senseo.
-* *Senseo*.setLevels(niveau1, niveau2) | Pour configurer en entrées digitales les deux capteurs de niveau d'eau, pour une tasse et pour deux tasses, sur l'instance Senseo.
-* *Senseo*.setLevel(niveau) | Pour configurer en entrée digitale un capteur de niveau d'eau sur l'instance Senseo.
-* *Senseo*.setTempSensor(captTemp) | Pour configurer en entrée analogique un capteur de température sur l'instance Senseo.
-* *Senseo*.readLvl() | Pour lire l'état du capteur de niveau d'eau. Cette fonction est utilisée lorsqu'il n'y a qu'un seul capteur de niveau d'eau sur la machine.
-* *Senseo*.readLvl1() | Pour lire l'état du capteur de niveau d'eau pour une tasse. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
-* *Senseo*.readLvl2() | Pour lire l'état du capteur de niveau d'eau pour deux tasses. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
-* *Senseo*.readTemp() | Pour lire la valeur analogique en 10-bits du capteur de température. Cette méthode retourne une valeur flottante / réelle entre 0 et 1023 correspondant à la température mesurée par le capteur.
-* *Senseo*.readTemp(valeurTemp) | Pour lire la valeur analogique en 10-bits du capteur de température. Cette méthode demande une variable flottante / réelle en argument. Elle y stocke une valeur entre 0 et 1023 correspondant à la température mesurée par le capteur.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il y a quatre méthodes : une première pour l'activation de la pompe, une deuxième pour la désactivation de la pompe, une troisième pour l'activation de la résistance chauffante, une quatrième pour la désactivation de la résistance chauffante.
 * *Senseo*.activatePump() | Pour activer la pompe.
 * *Senseo*.shutdownPump() | Pour désactiver la pompe.
 * *Senseo*.activateHeat() | Pour activer la résistance chauffante.
 * *Senseo*.shutdownHeat() | Pour désactiver la résistance chauffante.
 
+### 5. Le / les capteurs de niveau d'eau :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Une machine Senseo dispose forcément de capteurs de niveau d'eau. La plupart du temps, ces capteurs sont de type digital. Soit le niveau est assez élevé, soit il n'est pas assez élevé. La librairie procède de la même façon, et permet d'utiliser des capteurs de niveau d'eau de type tout ou rien (TOR). Selon les modèles, le nombre de capteurs peut varier entre un et deux. Deux capteurs permettent de détecter deux niveaux d'eau, un niveau pour une simple tasse et un niveau pour deux tasses. La librairie permet de faire les deux.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il faut configurer le ou les capteurs dans l'initialisation, donc dans la fonction setup(). Deux méthodes sont possibles : soit une méthode pour déclarer la broche d'un unique capteur de niveau, soit une méthode pour déclarer les deux broches utilisées pour les deux capteurs de niveau. Chacune de ces méthodes les configure comme des entrées digitales. Rappelons que l'instance basée sur le shield fait la configuration sur base du shield, et que dans ce cas il n'est pas nécessaire d'utiliser ces méthodes.
+* *Senseo*.setLevels(niveau1, niveau2) | Pour configurer en entrées digitales les deux capteurs de niveau d'eau, pour une tasse et pour deux tasses, sur l'instance Senseo.
+* *Senseo*.setLevel(niveau) | Pour configurer en entrée digitale un capteur de niveau d'eau sur l'instance Senseo.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Au sein du programme, on peut ensuite utiliser une ou deux méthodes (selon la configuration faite) pour lire les états des capteurs et donc détecter si les niveaux d'eau sont assez élevés ou non. Notons que si la configuration a été faite pour un capteur unique, on a prévu qu'une seule méthode *Senseo*.readLvl(), et qu'il vaut mieux ne pas utiliser les autres méthodes. De même, si la configuration a été faite pour deux capteurs, vaut mieux utiliser les méthodes associées et ne pas utiliser la méthode prévue pour un capteur unique.
+* *Senseo*.readLvl() | Pour lire l'état du capteur de niveau d'eau. Cette fonction est utilisée lorsqu'il n'y a qu'un seul capteur de niveau d'eau sur la machine.
+* *Senseo*.readLvl1() | Pour lire l'état du capteur de niveau d'eau pour une tasse. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
+* *Senseo*.readLvl2() | Pour lire l'état du capteur de niveau d'eau pour deux tasses. Cette fonction est utilisée lorsqu'il y a deux capteurs de niveau d'eau sur la machine.
+
+### 6. Le capteur de température :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorsque la résistance chauffante est active, la température de l'eau augmente. Il faut pouvoir arrêter la résistance chauffante lorsque la température a atteint un certain seuil (en général autour de 95°C). Il faut pour cela un capteur de température, qui est en général un capteur analogique. La librairie permet de configurer et récupérer les valeurs d'un seul capteur analogique. Il existe plusieurs modèles de machine Senseo, et tous les modèles n'auront pas nécessairement les mêmes sortes de capteurs de température. Voilà pourquoi la libraire ne saurait renseigner directement les valeurs en degrés. Elle retourne par contre une valeur analogique entre 0 et 1023. La méthode préconisée est de partir de cette valeur pour définir un seuil vers lequel la température n'est ni trop élevée ni trop faible.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Il faut commencer par configurer le capteur analogique lors de l'initialisation dans la fonction setup(). Pour cela, on utilise une méthode par laquelle on renseigne la broche sur laquelle est raccordé le capteur. La méthode se charge ensuite de configurer la broche en entrée analogique. Notons que le capteur doit forcément être branché sur une des broches analogiques suivantes de l'Arduino Uno : A0, A1, A2, A3, A4, A5. Notons ensuite que la configuration est faite par défaut dans le cas de l'instance basée sur le shield, et qu'il n'est pas nécessaire dans ce cas d'utiliser cette méthode.
+* *Senseo*.setTempSensor(captTemp) | Pour configurer en entrée analogique un capteur de température sur l'instance Senseo.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On peut ensuite utiliser l'une des deux méthodes suivantes pour lire la valeur analogique du capteur de température. Notons que cette valeur peut être de type int ou de type float. L'utilisateur peut donc stocker la valeur dans une variable de type int ou de type float.
+* *Senseo*.readTemp() | Pour lire la valeur analogique en 10-bits du capteur de température. Cette méthode retourne une valeur flottante / réelle entre 0 et 1023 correspondant à la température mesurée par le capteur.
+* *Senseo*.readTemp(valeurTemp) | Pour lire la valeur analogique en 10-bits du capteur de température. Cette méthode demande une variable flottante / réelle en argument. Elle y stocke une valeur entre 0 et 1023 correspondant à la température mesurée par le capteur.
+
+### 7. La communication série, par exemple pour un module Bluetooth :
+
+### 8. Le ou les chronos :
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dans le dossier examples de cette librairie, nous avons écrit quelques sketchs pour la configuration et l'utilisation de la bibliothèque. Ces sketchs sont accessibles directement depuis l'IDE Arduino, dans l'onglet du menu déroulant Fichier->Exemples->SenseoUno. Voici une liste des sketchs présents et ce qu'ils permettent de faire :
 * shield_settings.ino | Sketch de configuration minimale sur base des raccordements du shield à partir duquel la bibliothèque a été implémentée. Pour un raccordement différent, voir le sketch "custom_settings.ino".
