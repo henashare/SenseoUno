@@ -50,6 +50,10 @@ startChrono2	KEYWORD2
 isCountdown	KEYWORD2
 isCountdown1	KEYWORD2
 isCountdown2	KEYWORD2
+resetChrono	KEYWORD2
+resetChronos	KEYWORD2
+resetChrono1	KEYWORD2
+resetChrono2	KEYWORD2
 stopChrono	KEYWORD2
 stopChronos	KEYWORD2
 

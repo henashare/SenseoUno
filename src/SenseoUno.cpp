@@ -285,13 +285,14 @@ void SenseoUno::shutdownLed(){
 
 /***** LED RGB *****/
 void SenseoUno::activateRGB(bool R, bool G, bool B){
-	bool red = R; bool green = G; bool blue = B;
-	shutdownRGB();
-	bool tab[3] = {red, green, blue};
+	bool tab[3] = {R, G, B};
 	for(int i = 0; i<3; i++){
 		if((i==0) && (tab[i] == 1)) activateR();
+		else if((i==0) && (tab[i] == 0)) shutdownR();
 		else if((i==1) && (tab[i] == 1)) activateG();
+		else if((i==1) && (tab[i] == 0)) shutdownG();
 		else if((i==2) && (tab[i] == 1)) activateB();
+		else if((i==2) && (tab[i] == 0)) shutdownB();
 	}
 }
 
@@ -301,7 +302,6 @@ void SenseoUno::shutdownRGB(){
 
 /***** LED R *****/
 void SenseoUno::activateR(){
-	shutdownRGB();
 	short pin = ledR;
 	short port = whichPort(&pin);
 	activate(&port, &pin);
@@ -315,7 +315,6 @@ void SenseoUno::shutdownR(){
 
 /***** LED G *****/
 void SenseoUno::activateG(){
-	shutdownRGB();
 	short pin = ledG;
 	short port = whichPort(&pin);
 	activate(&port, &pin);
@@ -329,7 +328,6 @@ void SenseoUno::shutdownG(){
 
 /***** LED B *****/
 void SenseoUno::activateB(){
-	shutdownRGB();
 	short pin = ledB;
 	short port = whichPort(&pin);
 	activate(&port, &pin);
@@ -385,13 +383,20 @@ void SenseoUno::startChrono(long countdown_value){
 	configChrono();
 }
 
-bool SenseoUno::isElapsedChrono(volatile int *val1, volatile int *val2){
-	if(*val1>=counter1){
-		*val1 = 0;
+bool SenseoUno::isElapsedChrono(volatile int *val){
+	if(*val>=counter1){
+		*val = 0;
 		return 1;
 	}
-	if(*val2 > 9999) *val2 = 0;	
 	return 0;
+}
+
+void SenseoUno::rebootChrono(volatile int *val){
+	*val = 0;
+}
+
+void SenseoUno::rebootChronos(volatile int *val1, volatile int *val2){
+	*val1 = 0; *val2 = 0;
 }
 
 void SenseoUno::startChrono1(long countdown_value){
@@ -405,14 +410,6 @@ void SenseoUno::startChrono1(long countdown_value){
 	configChrono();
 }
 
-bool SenseoUno::isElapsedChrono1(volatile int *val){
-	if(*val>=counter1){
-		*val = 0;
-		return 1;
-	}
-	return 0;
-}
-
 void SenseoUno::startChrono2(long countdown_value){
 	// Maximum one minute / 60 seconds for the chrono countdown value
 	if(countdown_value > 60000) countdown_value == 60000;
@@ -424,22 +421,8 @@ void SenseoUno::startChrono2(long countdown_value){
 	configChrono();
 }
 
-bool SenseoUno::isElapsedChrono2(volatile int *val){
-	if(*val>=counter2){
-		*val = 0;
-		return 1;
-	}
-	return 0;
-}
-
 void SenseoUno::stopChrono(){
 	// Put a high value in counter1 and counter2 to be sure that chrono1 and chrono2 will never be higher than counter1 and counter2 before timer1 interruption is disabled
-	counter1 = 30000;
-	counter2 = 30000;
-	TIMSK1 &= ~(1<<TOIE1);
-}
-
-void SenseoUno::stopChronos(){
 	counter1 = 30000;
 	counter2 = 30000;
 	TIMSK1 &= ~(1<<TOIE1);
