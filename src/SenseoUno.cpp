@@ -383,8 +383,16 @@ void SenseoUno::startChrono(long countdown_value){
 	configChrono();
 }
 
-bool SenseoUno::isElapsedChrono(volatile int *val){
+bool SenseoUno::isElapsedChrono1(volatile int *val){
 	if(*val>=counter1){
+		*val = 0;
+		return 1;
+	}
+	return 0;
+}
+
+bool SenseoUno::isElapsedChrono1(volatile int *val){
+	if(*val>=counter2){
 		*val = 0;
 		return 1;
 	}

@@ -118,9 +118,9 @@
 	The macro isCountdown2() is a simplified writing for a SenseoUno boolean method that checks if the value set in the startChrono2() method has been reached. This macro can be used as a common method in the .ino sketch.	*/
 #define CHRONO_ENABLE volatile int chrono1 = 0; volatile int chrono2 = 0; ISR(TIMER1_OVF_vect){chrono1 += 1; chrono2 += 1; if(chrono1 > 32500) chrono1 = 0; else if(chrono2 > 32500) chrono2 = 0;}
 #define CHRONOS_ENABLE CHRONO_ENABLE
-#define isCountdown() isElapsedChrono(&chrono1)
-#define isCountdown1() isElapsedChrono(&chrono1)
-#define isCountdown2() isElapsedChrono(&chrono2)
+#define isCountdown() isElapsedChrono1(&chrono1)
+#define isCountdown1() isElapsedChrono1(&chrono1)
+#define isCountdown2() isElapsedChrono2(&chrono2)
 #define resetChrono() rebootChrono(&chrono1)
 #define resetChronos() rebootChronos(&chrono1, &chrono2)
 #define resetChrono1() rebootChrono(&chrono1)
@@ -215,11 +215,13 @@ class SenseoUno{
 		void analogWriteRGB(short R, short G, short B);
 		// Public function made to be used in the .ino sketch --> made to close the PWM outputs of the RGB
 		void analogShutdownRGB();
-		
-		// Public function made to be used in the .ino sketch --> made to start the chrono1 with a milliseconds countdown value
+
+		// Public function made to be used in the .ino sketch --> made to start the chrono with a milliseconds countdown value
 		void startChrono(long countdown_value);
-		// !!! Public function !!!NOT!!! made to be used in the .ino sketch. Use the macro isCountdown(), isCountdown1() or isCountdown2() instead --> made to check if the countdown value has been reached !!!
-		bool isElapsedChrono(volatile int *val);
+		// !!! Public function !!!NOT!!! made to be used in the .ino sketch. Use the macro isCountdown() or isCountdown1() instead --> made to check if the countdown value has been reached !!!
+		bool isElapsedChrono1(volatile int *val);
+		// !!! Public function !!!NOT!!! made to be used in the .ino sketch. Use the macro isCountdown2() instead --> made to check if the countdown value has been reached !!!
+		bool isElapsedChrono2(volatile int *val);
 		// !!! Public function !!!NOT!!! made to be used in the .ino sketch. Use the macro resetChrono(), resetChrono1() or resetChrono2() instead --> made to reset the chrono1 or / and the chrono2 to 0 !!!
 		void rebootChrono(volatile int *val);
 		 // !!! Public function !!!NOT!!! made to be used in the .ino sketch. Use the macro resetChronos() instead --> made to reset the chrono1 or / and the chrono2 to 0 !!!
