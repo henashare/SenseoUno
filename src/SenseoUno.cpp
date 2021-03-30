@@ -384,19 +384,21 @@ void SenseoUno::startChrono(long countdown_value){
 }
 
 bool SenseoUno::isElapsedChrono1(volatile int *val){
-	if(*val>=counter1){
+	/*if(*val>=counter1){
 		*val = 0;
 		return 1;
 	}
-	return 0;
+	return 0;*/
+	return (*val>counter1) ? 1 : 0;
 }
 
 bool SenseoUno::isElapsedChrono2(volatile int *val){
-	if(*val>=counter2){
+	/*if(*val>=counter2){
 		*val = 0;
 		return 1;
 	}
-	return 0;
+	return 0;*/
+	return (*val>counter2) ? 1 : 0;
 }
 
 void SenseoUno::rebootChrono(volatile int *val){
