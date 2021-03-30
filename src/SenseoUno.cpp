@@ -286,14 +286,9 @@ void SenseoUno::shutdownLed(){
 /***** LED RGB *****/
 void SenseoUno::activateRGB(bool R, bool G, bool B){
 	bool tab[3] = {R, G, B};
-	for(int i = 0; i<3; i++){
-		if((i==0) && (tab[i] == 1)) activateR();
-		else if((i==0) && (tab[i] == 0)) shutdownR();
-		else if((i==1) && (tab[i] == 1)) activateG();
-		else if((i==1) && (tab[i] == 0)) shutdownG();
-		else if((i==2) && (tab[i] == 1)) activateB();
-		else if((i==2) && (tab[i] == 0)) shutdownB();
-	}
+	(tab[0] == 1) ? activateR() : shutdownR();
+	(tab[1] == 1) ? activateG() : shutdownG();
+	(tab[2] == 1) ? activateB() : shutdownB();
 }
 
 void SenseoUno::shutdownRGB(){
