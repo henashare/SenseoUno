@@ -391,7 +391,7 @@ bool SenseoUno::isElapsedChrono1(volatile int *val){
 	return 0;
 }
 
-bool SenseoUno::isElapsedChrono1(volatile int *val){
+bool SenseoUno::isElapsedChrono2(volatile int *val){
 	if(*val>=counter2){
 		*val = 0;
 		return 1;
