@@ -148,6 +148,7 @@
 ### 11. La liste des sketches d'exemple :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dans le dossier examples de cette librairie, nous avons écrit quelques sketchs pour la configuration et l'utilisation de la bibliothèque. Ces sketchs sont accessibles directement depuis l'IDE Arduino, dans l'onglet du menu déroulant Fichier->Exemples->SenseoUno. Voici une liste des sketchs présents et ce qu'ils permettent de faire :
 * *custom_settings.ino* | Illustre comment créer et configurer une instance vide de la classe SenseoUno.
+* *EEPROM.ino* | Montre comment écrire et lire dans la mémoire EEPROM avec une instance de la classe SenseoUno.
 * *ledRGB_PWM.ino* | Montre comment utiliser une led RGB en mode PWM.
 * *read_temperature.ino* | Montre comment récupérer une valeur analogique en 10-bits sur un capteur analogique (comme par exemple un capteur de temérature).
 * *shield_settings.ino* | Illustre comment créer une instance de la classe SenseoUno basée sur le shield.
