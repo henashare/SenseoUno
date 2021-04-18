@@ -139,6 +139,11 @@
 ### 9. La mise en veille :
 
 ### 10. L'écriture en mémoire EEPROM :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'écriture en mémoire EEPROM permet de conserver des informations même lorsque le microcontrôleur n'est plus alimenté. Elle peut être utile notamment pour conserver en mémoire le nombre de cycles exécutés depuis le dernier détartrage. On peut alors fixer une valeur à partir de laquelle on informera l'utilisateur qu'il est temps de lancer un cycle de détartrage. Pour l'écriture en EEPROM, on suppose qu'il n'est pas nécessaire d'avoir des fonctionnalités très avancées. Aussi proposons-nous des méthodes basiques pour la lecture, l'écriture et l'adressage. Elles sont au nombre de quatre :
+* *Senseo*.set_memory_address(adresse) | Permet de fixer l'adresse à laquelle on va se rendre pour lire et/ou écrire un octet (donc une valeur comprise entre 0 et 255). Chaque instance de type SenseoUno a une adresse par défaut qui vaut 0. Si cette adresse convient à l'utilisateur et qu'il n'a besoin que d'un seul octet de donnée, il n'aura jamais besoin d'utiliser cette méthode.
+* *Senseo*.get_memory_address() | Permet de récupérer l'adresse actuelle utilisée pour la lecture / écriture en EEPROM.
+* *Senseo*.save_cups(valeur) | Permet de sauvegarder une nouvelle valeur dans la mémoire EEPROM à l'adresse fixée par l'utilisateur (ou à l'adresse par défaut).
+* *Senseo*.get_cups() | Permet de récupérer la valeur (dans un type entier) stockée dans la mémoire EEPROM à l'adresse fixée par l'utilisateur (ou à l'adresse par défaut).
 
 ### 11. La liste des sketches d'exemple :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dans le dossier examples de cette librairie, nous avons écrit quelques sketchs pour la configuration et l'utilisation de la bibliothèque. Ces sketchs sont accessibles directement depuis l'IDE Arduino, dans l'onglet du menu déroulant Fichier->Exemples->SenseoUno. Voici une liste des sketchs présents et ce qu'ils permettent de faire :
