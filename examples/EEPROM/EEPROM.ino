@@ -14,7 +14,6 @@ SenseoUno Senseo(EMPTY_INSTANCE);
 // We shall create 3 global variables used for the EEPROM
 unsigned int coffees = 0;
 int read_coffee_value = 0;
-int val;
 
 // Then we create 2 global variables for the serial conversion from the keyboard
 int int_msg;
