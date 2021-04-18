@@ -2,7 +2,7 @@
 
 /*BOOLEAN CONSTRUCTOR*/
 
-SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0)
+SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0)
 {
 	if(shieldOrNot == SHIELD_INSTANCE){
 		ledR = D9; ledG = D10; ledB = D11; pump = D6; heater = D5; lvl1 = D7; lvl2 = D8; Button1 = D2; Button2 = D4; ButtonC = D3; anaTemp = A0;
@@ -11,21 +11,24 @@ SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0)
 		this->setLevels(lvl1, lvl2);
 		this->set3Buttons(Button1, Button2, ButtonC);
 		this->setTempSensor(anaTemp);
+		this->get_cups();
 	}
 	else if(shieldOrNot == EMPTY_INSTANCE){
 		this->configPWM1(&PWM1);
+		this->get_cups();
 	}
 }
 
 /*SHIELD ARGUMENTLESS CONSTRUCTOR*/
 
-SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), lvl1(D7), lvl2(D8), Button1(D2), Button2(D4), ButtonC(D3), anaTemp(A0), PWM0(0), PWM1(0), PWM2(0)
+SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), lvl1(D7), lvl2(D8), Button1(D2), Button2(D4), ButtonC(D3), anaTemp(A0), PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0)
 {
 	this->setAnalogRGB(ledR, ledG, ledB);
 	this->setPower(pump, heater);
 	this->setLevels(lvl1, lvl2);
 	this->set3Buttons(Button1, Button2, ButtonC);
 	this->setTempSensor(anaTemp);
+	this->get_cups();
 }
 
 /************************************************** SET FUNCTIONS **************************************************/
@@ -429,6 +432,37 @@ void SenseoUno::stopChrono(){
 	counter1 = 30000;
 	counter2 = 30000;
 	TIMSK1 &= ~(1<<TOIE1);
+}
+
+/***** EEPROM MEMORY *****/
+void SenseoUno::set_memory_address(int address){
+	if((address >= 0) && (address < 1024)) EEPROM_address = (unsigned int)address; // If the address value is coherent, we will store in the SenseoUno attribute EEPROM_address the value of address given as an argument
+}
+
+int SenseoUno::get_memory_address(){
+	return (int)EEPROM_address; // Let's convert the EEPROM_address attribute to an integer value and return this integer value
+}
+
+void SenseoUno::save_cups(unsigned int num){
+	// The value must be between 0 and 255
+	if((num >= 0) && (num < 256)){
+		while(EECR & (1<<EEPE)) ; // Then, wait until the last writing is over
+		EEDR = num; // The value to be written in the EEPROM memory is the value given as first argument of this method
+		EEAR = EEPROM_address; // The address is given as second argument of this method. If no address is given, there a default address set to 0
+		EECR |= (1<<EEMPE); // First step to activate the EEPROM writing
+		EECR |= (1<<EEPE); // Second step to activate the EEPROM writing
+	}
+}
+
+int SenseoUno::get_cups(){
+	unsigned char val; // Internal variable to receive the value we are going to read from the EEPROM memory
+	while(EECR & (1<<EEPE)) ; // If there has been a writing just before the beginning of this method, we must first wait until it's over
+	EEAR = EEPROM_address; // The address is given as single argument of this method. If no argument is given, there a default address set to 0
+	EECR |= (1<<EEMPE); // First step to activate the EEPROM reading
+	EECR |= (1<<EERE); // Second step to activate the EEPROM reading
+	val = EEDR; // Let's receive the data from the EEPROM memory
+	EEPROM_value = (int)val; // Convert the data taken from the EEPROM memory to integer, and put it into the EEPROM_value attribute
+	return EEPROM_value; // Finally return as an integer the data taken from the EEPROM memory
 }
 
 /************************************************** PRIVATE FUNCTIONS **************************************************/

@@ -56,6 +56,10 @@ resetChrono1	KEYWORD2
 resetChrono2	KEYWORD2
 stopChrono	KEYWORD2
 stopChronos	KEYWORD2
+set_memory_address	KEYWORD2
+get_memory_address	KEYWORD2
+save_cups	KEYWORD2
+get_cups	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

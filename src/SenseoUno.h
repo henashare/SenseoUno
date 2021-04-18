@@ -233,9 +233,19 @@ class SenseoUno{
 		// Public function made to be used in the .ino sketch --> made to stop the chrono
 		void stopChrono();
 		
+		// Public function made to be used in the .ino sketch --> made to specify the address in the EEPROM memory corresponding to the data we want to get
+		void set_memory_address(int address);
+		// Public function made to be used in the .ino sketch --> made to get the current reading/writing address in the EEPROM memory
+		int get_memory_address();
+		// Public function made to be used in the .ino sketch --> made to write a value between 0 and 255 in the EEPROM memory, value corresponding to the number of cups made since last descaling
+		void save_cups(unsigned int num);
+		// Public function made to be used in the .ino sketch --> made to read a value in the EEPROM memory corresponding to the number of cups made since last descaling
+		int get_cups();
+		
 	private:
 		short ledR, ledG, ledB, pump, heater, lvl1, lvl2, Button1, Button2, ButtonC, anaTemp, PWM0, PWM1, PWM2;
-		int counter1, counter2;
+		int counter1, counter2, EEPROM_value;
+		unsigned int EEPROM_address;
 
 		// Private function linked to two other private functions : toRegisterB() and toRegisterC() --> This function is made to determine the right port and therefore the right registers to call for digital use.
 		short whichPort(short *num);
