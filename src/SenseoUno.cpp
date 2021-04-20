@@ -465,6 +465,25 @@ int SenseoUno::get_cups(){
 	return EEPROM_value; // Finally return as an integer the data taken from the EEPROM memory
 }
 
+/***** SLEEP *****/
+void SenseoUno::sleep(int num1=0, int num2=0){
+	cli();
+	power_all_disable();
+	if(num1==0) EICRA |= (1<<ISC00) | (1<<ISC01) | (1<<ISC10) | (1<<ISC11);
+	else if(num1==1) EICRA |= (1<<ISC01) | (1<<ISC11);
+	else if(num1==2) EICRA |= (1<<ISC00) | (1<<ISC10);
+	else if(num1==3);
+	if(num2==0) EIMSK |= (1<<INT0) | (1<<INT1);
+	else if(num2==1) EIMSK |= (1<<INT0);
+	else if(num2==2){
+		EIMSK = 0;
+		EIMSK |= (1<<INT1);
+	}
+	SMCR |= (1<<SM1);
+	sei();
+	sleep_mode();
+}
+
 /************************************************** PRIVATE FUNCTIONS **************************************************/
 
 short SenseoUno::whichPort(short *num){

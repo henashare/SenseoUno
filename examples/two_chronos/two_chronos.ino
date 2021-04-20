@@ -34,7 +34,7 @@ void loop()
   // If the countdown of the chrono 1 of the Senseo has been reached, increment the counter1 by 1 and display a message.
   if(Senseo.isCountdown1()){
     counter1 += 1;
-    Serial.print("\n/***** CHRONO 1 *****/\nChrono 1 : 5 seconds elapsed | Counter of the chrono 1 : ");
+    Serial.print(F("\n/***** CHRONO 1 *****/\nChrono 1 : 5 seconds elapsed | Counter of the chrono 1 : "));
     Serial.println(counter1);
   }
     
@@ -42,19 +42,19 @@ void loop()
   // Note that the verification of the chrono must be the last verified condition or the verification may not work fine.
   else if((counter2 < 25) && Senseo.isCountdown2()){
     counter2 += 1;
-    Serial.print("\nChrono 2 : 1 second elapsed | Counter of the chrono 2 : ");
+    Serial.print(F("\nChrono 2 : 1 second elapsed | Counter of the chrono 2 : "));
     Serial.println(counter2);
   }
 
   // If counter1 is bigger or equal to 9 and the countdown of the chrono 2 of the Senseo has been reached.
   // Note that the verification of the chrono must be the last verified condition or the verification may not work fine.
   else if((counter1 >= 9) && Senseo.isCountdown2()){
-    Serial.println("The chrono 2 is still enabled");
+    Serial.println(F("The chrono 2 is still enabled"));
   }
 
   // If the counter1 is equal to 10, we shall stop the two chronos.
   if(counter1 == 10){
-    Serial.println("\n/***** STOP CHRONO *****/");
+    Serial.println(F("\n/***** STOP CHRONO *****/"));
     Senseo.stopChronos(); // Note that the Senseo.stopChrono() method does the same.
     counter1 += 1;
   }

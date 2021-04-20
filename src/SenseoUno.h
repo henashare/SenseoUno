@@ -13,6 +13,8 @@
 #define __SENSEO_UNO_H__
 
 #include <Arduino.h>
+#include <avr/sleep.h>
+#include <avr/power.h>
 
 // Pin mapping for Arduino UNO
 #ifndef D0
@@ -126,6 +128,19 @@
 #define resetChrono1() rebootChrono(&chrono1)
 #define resetChrono2() rebootChrono(&chrono2)
 #define stopChronos() stopChrono()
+
+/*	Macros for the sleep mode of the SenseoUno instance	*/
+#define SENSEO_SLEEP ISR(INT0_vect){power_all_enable();} ISR(INT1_vect, ISR_ALIASOF(INT0_vect));
+#define SENSEO_SLEEP_1 SENSEO_SLEEP
+#define SENSEO_SLEEP_2 ISR(INT0_vect){power_all_enable();}
+#define SENSEO_SLEEP_3 ISR(INT1_vect){power_all_enable();}
+#define SENSEO_RISING	0
+#define SENSEO_FALLING	1
+#define SENSEO_CHANGE	2
+#define SENSEO_LOW	3
+#define WAKE_UP_1	0
+#define WAKE_UP_2	1
+#define WAKE_UP_3	2
 
 class SenseoUno{
 	public:
@@ -241,6 +256,12 @@ class SenseoUno{
 		void save_cups(unsigned int num);
 		// Public function made to be used in the .ino sketch --> made to read a value in the EEPROM memory corresponding to the number of cups made since last descaling
 		int get_cups();
+		
+		// Public function made to be used in the .ino sketch --> made to activate / start the sleep mode of the SenseoUno. Its configuration is determined by the upper defined macros
+		void sleep(int num1=0, int num2=0);
+		
+		// Public function to be used in the .ino sketch --> made to init the UART communication to the specified baudrate
+		void begin(int baudrate, long freq=16000000);
 		
 	private:
 		short ledR, ledG, ledB, pump, heater, lvl1, lvl2, Button1, Button2, ButtonC, anaTemp, PWM0, PWM1, PWM2;

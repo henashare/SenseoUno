@@ -35,9 +35,9 @@ void loop()
       counter +=1;
       Senseo.activateLed();
       // Then, display these actions on serial monitor.
-      Serial.print("\nCounter : ");
+      Serial.print(F("\nCounter : "));
       Serial.println(counter);
-      Serial.println("LED ON");
+      Serial.println(F("LED ON"));
     }
 
     // Either the counter is pair, in which case we shall shutdown the LED and increment the counter by 1.
@@ -45,15 +45,15 @@ void loop()
       counter +=1;
       Senseo.shutdownLed();
       // Then, display these actions on serial monitor.
-      Serial.print("\nCounter: ");
+      Serial.print(F("\nCounter: "));
       Serial.println(counter);
-      Serial.println("LED OFF");
+      Serial.println(F("LED OFF"));
     }
   }
 
   // If the counter is equal to 20, which means 10 ON and OFF cycles, we shall stop the chrono.
   if(counter == 20){
-    Serial.println("\n/***** STOP CHRONO *****/");
+    Serial.println(F("\n/***** STOP CHRONO *****/"));
     Senseo.stopChrono(); // Note that the Senseo.stopChronos() method does the same.
     counter += 1; // The, increment one last time the counter so that we do not go anymore in this conditional code block.
   }

@@ -24,7 +24,7 @@ void setup()
 	Serial.begin(115200); // Let's open a serial communication
 	//Senseo.set_memory_address(15); // There is also the possibility to set antother address for reading/writing in the EEPROM
 	read_coffee_value = Senseo.get_cups(); // We first get the value at the address (default address is 0) | Note that if the EEPROM has never been written at this address, the value should be 255
-	Serial.print("\n\nWHAT IS IN THE MEMORY AT THE BEGINNING OF THE SKETCH : "); // Then we print the value to the serial monitor
+	Serial.print(F("\n\nWHAT IS IN THE MEMORY AT THE BEGINNING OF THE SKETCH : ")); // Then we print the value to the serial monitor
 	Serial.println(read_coffee_value);
 }
 
@@ -44,11 +44,11 @@ void loop()
 		// Or if the character sent is "R" for Read...
 		else if(strcmp(message, "R") == 0){
 			read_coffee_value = Senseo.get_cups(); // ... We will read the value from the EEPROM memory...
-			Serial.print("\n\nVALUE TAKEN FROM THE EEPROM :\n");
+			Serial.print(F("\n\nVALUE TAKEN FROM THE EEPROM :\n"));
 			Serial.print(read_coffee_value); // ... And print this value to the serial monitor
-			Serial.print(" | ");
+			Serial.print(F(" | "));
 			Serial.print(coffees); // Then print the last value written in the EEPROM
-			Serial.print(" | ");
+			Serial.print(F(" | "));
 			Serial.println(Senseo.get_memory_address()); // Finally, we will print the address of the EEPROM memory data
 		}
 	}

@@ -33,7 +33,7 @@ void setup() {
 void loop() {
   // If there is a countdown achieved on chrono 1, we will read the 10-bits analog value as int and float with the first method, and display it on serial monitor.
   if((counter%2 == 0) && Senseo.isCountdown1()){
-    Serial.println("\n/***** FIRST METHOD *****/");
+    Serial.println(F("\n/***** FIRST METHOD *****/"));
     Senseo.readAnalogTemp(temp);
     Serial.println(temp);
     Senseo.readAnalogTemp(temperature);
@@ -44,7 +44,7 @@ void loop() {
 
   // If there is a countdown achieved on chrono 1, we will read the 10-bits analog value as int and float with the second method, and display it on serial monitor.
   else if((counter%2 == 1) && Senseo.isCountdown2()){
-    Serial.println("\n/***** SECOND METHOD *****/");
+    Serial.println(F("\n/***** SECOND METHOD *****/"));
     temperature = Senseo.readAnalogTemp();
     Serial.println(temperature);
     temp = Senseo.readAnalogTemp();
