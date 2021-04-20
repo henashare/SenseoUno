@@ -263,7 +263,7 @@ class SenseoUno{
 		int get_cups();
 		
 		// Public function made to be used in the .ino sketch --> made to activate / start the sleep mode of the SenseoUno. Its configuration is determined by the upper defined macros
-		void sleep(int num1=0, int num2=0);
+		void sleep(int num1=0, int num2=0, bool autoreset=0);
 		// Public function made to be used in the .ino sketch --> made to activate an internal reset within the SenseoUno instance. It allows to restart the whole program
 		void internal_reset();
 		
