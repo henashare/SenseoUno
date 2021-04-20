@@ -10,8 +10,8 @@
 SenseoUno Senseo(EMPTY_INSTANCE);
 
 SENSEO_SLEEP // The macro SENSEO_SLEEP_1 works the same way, it allows a sleep mode exit with D2 and D3
-// SENSEO_UNO_SLEEP_2 // Allows to exit sleep mode only with D2
-// SENSEO_UNO_SLEEP_3 // Allows to exit sleep mode only with D3
+// SENSEO_SLEEP_2 // Allows to exit sleep mode only with D2
+// SENSEO_SLEEP_3 // Allows to exit sleep mode only with D3
 
 void setup()
 {
