@@ -194,7 +194,8 @@
 * *shield_settings.ino* | Illustre comment créer une instance de la classe SenseoUno basée sur le shield.
 * *single_chrono.ino* | Cet exemple montre comment déclarer, configurer et utiliser un chrono unique.
 * *two_chronos.ino* | Cet exemple montre comment déclarer, configurer et utiliser les deux chronos de la librairie.
-* *sleep.ino* | Cet exemple montre comment activer le mode veille avec une instance SenseoUno.
+* *sleep_no_autoreset.ino* | Cet exemple montre comment activer le mode veille sans faire de reset automatique avec une instance SenseoUno.
+* *Senseo_autoreset.ino* | Cet exemple montre comment activer le mode veille avec un reset automatique via une instance SenseoUno.
 
 
 </div>
