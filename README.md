@@ -137,6 +137,23 @@
 * *Senseo*.stopChronos() | Permet d'éteindre le chrono configuré (ou les chronos, cette méthode fait la même chose que la méthode *Senseo*.stopChronos()). Le chrono est alors déréglé, et pour le refaire fonctionner il faudra le reconfigurer avec les méthodes *Senseo*.startChrono1(valeur1) et *Senseo*.startChrono2(valeur2).
 
 ### 9. La mise en veille :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le mode veille est prévu pour faire des économies d'énergie. Cela permet de désactiver un maximum d'éléments du microcontrôleur. La réactivation se fera alors par un appui sur un bouton-poussoir de la machine. Cette fonctionnalité peut s'activer au bout d'un temps défini et à un (ou plusieurs) endroit spécifique du programme. Ce temps et ces endroits sont définis par le programmeur.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le mode de fonctionnement est similaire à celui des chronos. Il existe une seule méthode pour le mode veille. Cette méthode doit être associée à une macro déclarée de façon globale tout en haut du programme. La méthode peut prendre un seul argument, deux arguments, ou aucun argument. On présente dans un premier temps la méthode avec ses variantes. On expose ensuite un tableau décrivant les modes de configurations possibles. La méthode *Senseo*.sleep() peut prendre jusqu'à deux arguments. Le premier argument est lié au mode de sortie deu mode veille. On peut sortir du mode veille par un front montant, par un front descendant, par un état bas ou par un changement d'état. Il existe des macros utilisables pour la configuration, quei sont présentées dans un tableau un peu plus loin. Voici la méthode :
+* *Senseo*.sleep() | Démarre le mode veille configuré par défaut en mode 1 (voir tableau ci-dessous). Ce mode permet une sortie du mode veille par détection d'un front montant sur la broche D2 ou sur la broche D3.
+* *Senseo*.sleep(mode_activation, mode_de_sortie) | Démarre le mode veille configuré par défaut en mode 1 (voir tableau ci-dessous). Ce mode permet une sortie du mode veille par une activité (front montant, front descendant, état bas, ou n'importe quel changement d'état) sur la broche D2 ou sur la broche D3.
+* *Senseo*.sleep(mode_activation) | Démarre le mode veille configuré en mode 1 (voir tableau ci-dessous) en choisissant le type de détection (front montant, front descendant, état bas, ou n'importe quel changement d'état).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'utilisation de la méthode ne suffit pas. Il faut obligatoirement ajouter une macro de façon globale en début de programme. La macro est nécessaire au fonctionnement du mode veille. Il y a plusieurs macros globales possibles, pour différents modes d'utilisation.
+| Mode d'utilisation | Macro à utiliser dans le programme | Où utiliser la macro                        |
+| :----------------: | :--------------------------------: | :-----------------------------------------: |
+| Mode 1             | SENSEO_SLEEP                       | Tout en haut, macro globale                 |
+| Mode 1             | SENSEO_SLEEP_1                     | Tout en haut, macro globale                 |
+| Mode 1             | WAKE_UP_1                          | Méthode *Senseo*.sleep(), deuxième argument |
+| Mode 2             | SENSEO_SLEEP_2                     | Tout en haut, macro globale                 |
+| Mode 2             | WAKE_UP_2                          | Méthode *Senseo*.sleep(), deuxième argument |
+| Mode 3             | SENSEO_SLEEP_3                     | Tout en haut, macro globale                 |
+| Mode 3             | WAKE_UP_3                          | Méthode *Senseo*.sleep(), deuxième argument |
 
 ### 10. L'écriture en mémoire EEPROM :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'écriture en mémoire EEPROM permet de conserver des informations même lorsque le microcontrôleur n'est plus alimenté. Elle peut être utile notamment pour conserver en mémoire le nombre de cycles exécutés depuis le dernier détartrage. On peut alors fixer une valeur à partir de laquelle on informera l'utilisateur qu'il est temps de lancer un cycle de détartrage. Pour l'écriture en EEPROM, on suppose qu'il n'est pas nécessaire d'avoir des fonctionnalités très avancées. Aussi proposons-nous des méthodes basiques pour la lecture, l'écriture et l'adressage. Elles sont au nombre de quatre :
