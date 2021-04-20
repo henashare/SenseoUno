@@ -7,18 +7,18 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
 ### Table des matières :
-- [Introduction :](#Introduction-)
-- [1. Déclarer l'instance de classe SenseoUno :](#1-déclarer-linstance-de-classe-senseouno-)
-- [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :](#2-piloter-une-ledrgb-une-simple-led-ou-trois-leds-en-lieu-et-place-dune-led-rgb-)
-- [3. Les boutons-poussoirs (BP) :](#3-les-boutons-poussoirs-bp-)
-- [4. Les éléments de puissance | Pompe et résistance chauffante :](#4-les-éléments-de-puissance--pompe-et-résistance-chauffante-)
-- [5. Le / les capteurs de niveau d'eau :](#5-le--les-capteurs-de-niveau-deau-)
-- [6. Le capteur de température :](#6-le-capteur-de-température-)
-- [7. La communication série, par exemple pour un module Bluetooth :](#7-la-communication-série-par-exemple-pour-un-module-bluetooth-)
-- [8. Le ou les chronos :](#8-le-ou-les-chronos-)
-- [9. La mise en veille :](#9-la-mise-en-veille-)
-- [10. L'écriture en mémoire EEPROM :](#10-lécriture-en-mémoire-eeprom-)
-- [11. La liste des sketches d'exemple :](#11-la-liste-des-sketches-dexemple-)
+- [Introduction](#Introduction-)
+- [1. Déclarer l'instance de classe SenseoUno](#1-déclarer-linstance-de-classe-senseouno-)
+- [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB](#2-piloter-une-ledrgb-une-simple-led-ou-trois-leds-en-lieu-et-place-dune-led-rgb-)
+- [3. Les boutons-poussoirs (BP)](#3-les-boutons-poussoirs-bp-)
+- [4. Les éléments de puissance | Pompe et résistance chauffante](#4-les-éléments-de-puissance--pompe-et-résistance-chauffante-)
+- [5. Le / les capteurs de niveau d'eau](#5-le--les-capteurs-de-niveau-deau-)
+- [6. Le capteur de température](#6-le-capteur-de-température-)
+- [7. La communication série, par exemple pour un module Bluetooth](#7-la-communication-série-par-exemple-pour-un-module-bluetooth-)
+- [8. Le ou les chronos](#8-le-ou-les-chronos-)
+- [9. La mise en veille](#9-la-mise-en-veille-)
+- [10. L'écriture en mémoire EEPROM](#10-lécriture-en-mémoire-eeprom-)
+- [11. La liste des sketches d'exemple](#11-la-liste-des-sketches-dexemple-)
 
 ### Introduction :
 <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La bibliothèque est basée sur un shield réalisé dans un cadre pédagogique. Ce shield offre des possibilités pour le pilotage d'un machine à café Senseo. Ces possibilités sont les suivantes :
