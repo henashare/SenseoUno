@@ -1,4 +1,4 @@
-- [1. Déclarer l'instance de classe SenseoUno :](###1-d-clarer-l-instance-de-classe-senseouno--)
+- [1. Déclarer l'instance de classe SenseoUno :](#1-déclarer-linstance-de-classe-senseouno-)
 - [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :](###2-piloter-une-ledrgb--une-simple-led--ou-trois-leds-en-lieu-et-place-d-une-led-rgb--)
 - [3. Les boutons-poussoirs (BP) :](###3-les-boutons-poussoirs--bp---)
 - [4. Les éléments de puissance | Pompe et résistance chauffante :](###4-les--l-ments-de-puissance---pompe-et-r-sistance-chauffante--)
