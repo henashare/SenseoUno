@@ -1,3 +1,21 @@
+- [<div align="center"> <ins>Bibliothèque SenseoUno :</ins> </div>](#-div-align--center----ins-biblioth-que-senseouno----ins----div-)
+  * [<div align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bibliothèque pour le pilotage d'une machine à café Senseo à partir d'une carte Arduino Uno. <ins>Attention :</ins> la bibliothèque fonctionne *uniquement* pour les microcontrôleurs basés sur l'Arduino Uno.</div>](#-div-align-justify--nbsp--nbsp--nbsp--nbsp--nbsp--nbsp-biblioth-que-pour-le-pilotage-d-une-machine---caf--senseo---partir-d-une-carte-arduino-uno--ins-attention----ins--la-biblioth-que-fonctionne--uniquement--pour-les-microcontr-leurs-bas-s-sur-l-arduino-uno--div-)
+      - [<div align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>Note :</ins> La bibliothèque est implémentée pour être utilisée à partir d'une carte Arduino Uno. Elle est faite pour être plus rapide que la bibliothèque Arduino lors de l'exécution du programme, d'où sa non-portabilité. En revanche, le référencement aux différents ports et registres est masqué par la bibliothèque. L'utilisateur "classique" ne sera donc pas dépaysé, et pourra coder son programme comme n'importe quel programme Arduino. Le code sera plus rapide pour les fonctions de la bibliothèque utiisées, mais ce gain de rapidité implique que la bibliothèque n'est pas utilisable sur toutes les cartes. Bien que ce ne soit pas à l'ordre du jour, d'autres bibliothèques du même type pourraient cependant voir le jour tôt ou tard afin de pouvoir exporter le code sur d'autres cartes.</div>](#-div-align-justify--nbsp--nbsp--nbsp--nbsp--nbsp--nbsp--ins-note----ins--la-biblioth-que-est-impl-ment-e-pour--tre-utilis-e---partir-d-une-carte-arduino-uno-elle-est-faite-pour--tre-plus-rapide-que-la-biblioth-que-arduino-lors-de-l-ex-cution-du-programme--d-o--sa-non-portabilit--en-revanche--le-r-f-rencement-aux-diff-rents-ports-et-registres-est-masqu--par-la-biblioth-que-l-utilisateur--classique--ne-sera-donc-pas-d-pays---et-pourra-coder-son-programme-comme-n-importe-quel-programme-arduino-le-code-sera-plus-rapide-pour-les-fonctions-de-la-biblioth-que-utiis-es--mais-ce-gain-de-rapidit--implique-que-la-biblioth-que-n-est-pas-utilisable-sur-toutes-les-cartes-bien-que-ce-ne-soit-pas---l-ordre-du-jour--d-autres-biblioth-ques-du-m-me-type-pourraient-cependant-voir-le-jour-t-t-ou-tard-afin-de-pouvoir-exporter-le-code-sur-d-autres-cartes--div-)
+    + [1. Déclarer l'instance de classe SenseoUno :](#1-d-clarer-l-instance-de-classe-senseouno--)
+    + [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :](#2-piloter-une-ledrgb--une-simple-led--ou-trois-leds-en-lieu-et-place-d-une-led-rgb--)
+    + [3. Les boutons-poussoirs (BP) :](#3-les-boutons-poussoirs--bp---)
+    + [4. Les éléments de puissance | Pompe et résistance chauffante :](#4-les--l-ments-de-puissance---pompe-et-r-sistance-chauffante--)
+    + [5. Le / les capteurs de niveau d'eau :](#5-le---les-capteurs-de-niveau-d-eau--)
+    + [6. Le capteur de température :](#6-le-capteur-de-temp-rature--)
+    + [7. La communication série, par exemple pour un module Bluetooth :](#7-la-communication-s-rie--par-exemple-pour-un-module-bluetooth--)
+    + [8. Le ou les chronos :](#8-le-ou-les-chronos--)
+    + [9. La mise en veille :](#9-la-mise-en-veille--)
+    + [10. L'écriture en mémoire EEPROM :](#10-l--criture-en-m-moire-eeprom--)
+    + [11. La liste des sketches d'exemple :](#11-la-liste-des-sketches-d-exemple--)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 # <div align="center"> <ins>Bibliothèque SenseoUno :</ins> </div>
 
 ## <div align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bibliothèque pour le pilotage d'une machine à café Senseo à partir d'une carte Arduino Uno. <ins>Attention :</ins> la bibliothèque fonctionne *uniquement* pour les microcontrôleurs basés sur l'Arduino Uno.</div>
