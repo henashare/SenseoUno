@@ -169,10 +169,10 @@
 | Mode 2             | WAKE_UP_2                          | Méthode *Senseo*.sleep(), deuxième argument |
 | Mode 3             | SENSEO_SLEEP_3                     | Tout en haut, macro globale                 |
 | Mode 3             | WAKE_UP_3                          | Méthode *Senseo*.sleep(), deuxième argument |
-| Indéterminé        | SENSEO_RISING                      | Méthode *Senseo*.sleep(), premier argument  |
-| Indéterminé        | SENSEO_FALLING                     | Méthode *Senseo*.sleep(), premier argument  |
-| Indéterminé        | SENSEO_LOW                         | Méthode *Senseo*.sleep(), premier argument  |
-| Indéterminé        | SENSEO_CHANGE                      | Méthode *Senseo*.sleep(), premier argument  |
+| /                  | SENSEO_RISING                      | Méthode *Senseo*.sleep(), premier argument  |
+| /                  | SENSEO_FALLING                     | Méthode *Senseo*.sleep(), premier argument  |
+| /                  | SENSEO_LOW                         | Méthode *Senseo*.sleep(), premier argument  |
+| /                  | SENSEO_CHANGE                      | Méthode *Senseo*.sleep(), premier argument  |
 
 ### 10. L'écriture en mémoire EEPROM :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'écriture en mémoire EEPROM permet de conserver des informations même lorsque le microcontrôleur n'est plus alimenté. Elle peut être utile notamment pour conserver en mémoire le nombre de cycles exécutés depuis le dernier détartrage. On peut alors fixer une valeur à partir de laquelle on informera l'utilisateur qu'il est temps de lancer un cycle de détartrage. Pour l'écriture en EEPROM, on suppose qu'il n'est pas nécessaire d'avoir des fonctionnalités très avancées. Aussi proposons-nous des méthodes basiques pour la lecture, l'écriture et l'adressage. Elles sont au nombre de quatre :
