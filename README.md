@@ -145,19 +145,19 @@
 * *Senseo*.sleep(mode_activation) | Démarre le mode veille configuré en mode 1 (voir tableau ci-dessous) en choisissant le type de détection (front montant, front descendant, état bas, ou n'importe quel changement d'état).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'utilisation de la méthode ne suffit pas. Il faut obligatoirement ajouter une macro de façon globale en début de programme. La macro est nécessaire au fonctionnement du mode veille. Il y a plusieurs macros globales possibles, pour différents modes d'utilisation.
-[color=#26B260]| Mode d'utilisation | Macro à utiliser dans le programme | Où utiliser la macro                        |[/color]
-[color=#26B260]| :----------------: | :--------------------------------: | :-----------------------------------------: |[/color]
-[color=#26B260]| Mode 1             | SENSEO_SLEEP                       | Tout en haut, macro globale                 |[/color]
-[color=#26B260]| Mode 1             | SENSEO_SLEEP_1                     | Tout en haut, macro globale                 |[/color]
-[color=#26B260]| Mode 1             | WAKE_UP_1                          | Méthode *Senseo*.sleep(), deuxième argument |[/color]
-[color=#26B260]| Mode 2             | SENSEO_SLEEP_2                     | Tout en haut, macro globale                 |[/color]
-[color=#26B260]| Mode 2             | WAKE_UP_2                          | Méthode *Senseo*.sleep(), deuxième argument |[/color]
-[color=#26B260]| Mode 3             | SENSEO_SLEEP_3                     | Tout en haut, macro globale                 |[/color]
-[color=#26B260]| Mode 3             | WAKE_UP_3                          | Méthode *Senseo*.sleep(), deuxième argument |[/color]
-[color=#26B260]| Indéterminé        | SENSEO_RISING                      | Méthode *Senseo*.sleep(), premier argument  |[/color]
-[color=#26B260]| Indéterminé        | SENSEO_FALLING                     | Méthode *Senseo*.sleep(), premier argument  |[/color]
-[color=#26B260]| Indéterminé        | SENSEO_LOW                         | Méthode *Senseo*.sleep(), premier argument  |[/color]
-[color=#26B260]| Indéterminé        | SENSEO_CHANGE                      | Méthode *Senseo*.sleep(), premier argument  |[/color]
+| Mode d'utilisation | Macro à utiliser dans le programme | Où utiliser la macro                        |
+| :----------------: | :--------------------------------: | :-----------------------------------------: |
+<span style="color: #26B260"> | Mode 1             | SENSEO_SLEEP                       | Tout en haut, macro globale                 | </span>
+<span style="color: #26B260"> | Mode 1             | SENSEO_SLEEP_1                     | Tout en haut, macro globale                 | </span>
+<span style="color: #26B260"> | Mode 1             | WAKE_UP_1                          | Méthode *Senseo*.sleep(), deuxième argument | </span>
+<span style="color: #26B260"> | Mode 2             | SENSEO_SLEEP_2                     | Tout en haut, macro globale                 | </span>
+<span style="color: #26B260"> | Mode 2             | WAKE_UP_2                          | Méthode *Senseo*.sleep(), deuxième argument | </span>
+<span style="color: #26B260"> | Mode 3             | SENSEO_SLEEP_3                     | Tout en haut, macro globale                 | </span>
+<span style="color: #26B260"> | Mode 3             | WAKE_UP_3                          | Méthode *Senseo*.sleep(), deuxième argument | </span>
+<span style="color: #26B260"> | Indéterminé        | SENSEO_RISING                      | Méthode *Senseo*.sleep(), premier argument  | </span>
+<span style="color: #26B260"> | Indéterminé        | SENSEO_FALLING                     | Méthode *Senseo*.sleep(), premier argument  | </span>
+<span style="color: #26B260"> | Indéterminé        | SENSEO_LOW                         | Méthode *Senseo*.sleep(), premier argument  | </span>
+<span style="color: #26B260"> | Indéterminé        | SENSEO_CHANGE                      | Méthode *Senseo*.sleep(), premier argument  | </span>
 
 ### 10. L'écriture en mémoire EEPROM :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'écriture en mémoire EEPROM permet de conserver des informations même lorsque le microcontrôleur n'est plus alimenté. Elle peut être utile notamment pour conserver en mémoire le nombre de cycles exécutés depuis le dernier détartrage. On peut alors fixer une valeur à partir de laquelle on informera l'utilisateur qu'il est temps de lancer un cycle de détartrage. Pour l'écriture en EEPROM, on suppose qu'il n'est pas nécessaire d'avoir des fonctionnalités très avancées. Aussi proposons-nous des méthodes basiques pour la lecture, l'écriture et l'adressage. Elles sont au nombre de quatre :
