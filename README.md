@@ -1,16 +1,14 @@
-- [1. Déclarer l'instance de classe SenseoUno :](#1-d-clarer-l-instance-de-classe-senseouno--)
-- [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :](#2-piloter-une-ledrgb--une-simple-led--ou-trois-leds-en-lieu-et-place-d-une-led-rgb--)
-- [3. Les boutons-poussoirs (BP) :](#3-les-boutons-poussoirs--bp---)
-- [4. Les éléments de puissance | Pompe et résistance chauffante :](#4-les--l-ments-de-puissance---pompe-et-r-sistance-chauffante--)
-- [5. Le / les capteurs de niveau d'eau :](#5-le---les-capteurs-de-niveau-d-eau--)
-- [6. Le capteur de température :](#6-le-capteur-de-temp-rature--)
-- [7. La communication série, par exemple pour un module Bluetooth :](#7-la-communication-s-rie--par-exemple-pour-un-module-bluetooth--)
-- [8. Le ou les chronos :](#8-le-ou-les-chronos--)
-- [9. La mise en veille :](#9-la-mise-en-veille--)
-- [10. L'écriture en mémoire EEPROM :](#10-l--criture-en-m-moire-eeprom--)
-- [11. La liste des sketches d'exemple :](#11-la-liste-des-sketches-d-exemple--)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+- [1. Déclarer l'instance de classe SenseoUno :](###1-d-clarer-l-instance-de-classe-senseouno--)
+- [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :](###2-piloter-une-ledrgb--une-simple-led--ou-trois-leds-en-lieu-et-place-d-une-led-rgb--)
+- [3. Les boutons-poussoirs (BP) :](###3-les-boutons-poussoirs--bp---)
+- [4. Les éléments de puissance | Pompe et résistance chauffante :](###4-les--l-ments-de-puissance---pompe-et-r-sistance-chauffante--)
+- [5. Le / les capteurs de niveau d'eau :](###5-le---les-capteurs-de-niveau-d-eau--)
+- [6. Le capteur de température :](###6-le-capteur-de-temp-rature--)
+- [7. La communication série, par exemple pour un module Bluetooth :](###7-la-communication-s-rie--par-exemple-pour-un-module-bluetooth--)
+- [8. Le ou les chronos :](###8-le-ou-les-chronos--)
+- [9. La mise en veille :](###9-la-mise-en-veille--)
+- [10. L'écriture en mémoire EEPROM :](###10-l--criture-en-m-moire-eeprom--)
+- [11. La liste des sketches d'exemple :](###11-la-liste-des-sketches-d-exemple--)
 
 
 # <div align="center"> <ins>Bibliothèque SenseoUno :</ins> </div>
