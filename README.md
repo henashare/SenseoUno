@@ -164,12 +164,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'utilisation de la méthode ne suffit pas. Il faut obligatoirement ajouter une macro de façon globale en début de programme. La macro est nécessaire au fonctionnement du mode veille. Il y a plusieurs macros globales possibles, pour différents modes d'utilisation. Au sein de la méthode il y a trois arguments permettant de faire la configuration. Pour chacun de ces arguments on liste également les macros à inscrire tel quel dans la méthode *Senseo*.sleep(), le but étant de montrer les possibilités de configuration et de simplifier l'usage et la lisibilité du code.
 | Mode d'utilisation | Macro à utiliser dans le programme | Où utiliser la macro                         | Fonctionnalité                                            |
 | :----------------: | :--------------------------------: | :-----------------------------------------:  | :-------------------------------------------------------: |
-| Mode 1             | SENSEO_SLEEP                       | Tout en haut, macro globale                  | Active une sortie du mode veille par les broches D2 et D3 |
-| Mode 1             | SENSEO_SLEEP_1                     | Tout en haut, macro globale                  | Active une sortie du mode veille par les broches D2 et D3 |
+| Mode 1             | SENSEO_SLEEP                       | Tout en haut du programme, macro globale     | Active une sortie du mode veille par les broches D2 et D3 |
+| Mode 1             | SENSEO_SLEEP_1                     | Tout en haut du programme, macro globale     | Active une sortie du mode veille par les broches D2 et D3 |
 | Mode 1             | WAKE_UP_1                          | Méthode *Senseo*.sleep(), deuxième argument  | Active une sortie du mode veille par les broches D2 et D3 |
-| Mode 2             | SENSEO_SLEEP_2                     | Tout en haut, macro globale                  | Active une sortie du mode veille par la broche D2         |
+| Mode 2             | SENSEO_SLEEP_2                     | Tout en haut du programme, macro globale     | Active une sortie du mode veille par la broche D2         |
 | Mode 2             | WAKE_UP_2                          | Méthode *Senseo*.sleep(), deuxième argument  | Active une sortie du mode veille par la broche D2         |
-| Mode 3             | SENSEO_SLEEP_3                     | Tout en haut, macro globale                  | Active une sortie du mode veille par la broche D3         |
+| Mode 3             | SENSEO_SLEEP_3                     | Tout en haut du programme, macro globale     | Active une sortie du mode veille par la broche D3         |
 | Mode 3             | WAKE_UP_3                          | Méthode *Senseo*.sleep(), deuxième argument  | Active une sortie du mode veille par la broche D3         |
 | /                  | SENSEO_RISING                      | Méthode *Senseo*.sleep(), premier argument   | Permet de sortir du mode veille par un front montant      |
 | /                  | SENSEO_FALLING                     | Méthode *Senseo*.sleep(), premier argument   | Permet de sortir du mode veille par un front descendant   |
