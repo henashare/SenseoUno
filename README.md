@@ -147,7 +147,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'utilisation de la méthode ne suffit pas. Il faut obligatoirement ajouter une macro de façon globale en début de programme. La macro est nécessaire au fonctionnement du mode veille. Il y a plusieurs macros globales possibles, pour différents modes d'utilisation.
 | Mode d'utilisation | Macro à utiliser dans le programme | Où utiliser la macro                        |
 | :----------------: | :--------------------------------: | :-----------------------------------------: |
-| <span style="color:red"><em>Mode 1</em></span>             | SENSEO_SLEEP                       | Tout en haut, macro globale                 |
+| Mode 1             | SENSEO_SLEEP                       | Tout en haut, macro globale                 |
 | Mode 1             | SENSEO_SLEEP_1                     | Tout en haut, macro globale                 |
 | Mode 1             | WAKE_UP_1                          | Méthode *Senseo*.sleep(), deuxième argument |
 | Mode 2             | SENSEO_SLEEP_2                     | Tout en haut, macro globale                 |
