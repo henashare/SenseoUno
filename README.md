@@ -13,8 +13,6 @@
     + [10. L'écriture en mémoire EEPROM :](#10-l--criture-en-m-moire-eeprom--)
     + [11. La liste des sketches d'exemple :](#11-la-liste-des-sketches-d-exemple--)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 # <div align="center"> <ins>Bibliothèque SenseoUno :</ins> </div>
 
