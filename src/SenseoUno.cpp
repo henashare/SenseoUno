@@ -466,7 +466,7 @@ int SenseoUno::get_cups(){
 }
 
 /***** SLEEP *****/
-void SenseoUno::sleep(int num1=0, int num2=0){
+void SenseoUno::sleep(int num1=0, int num2=0, bool autoreset=0){
 	cli();
 	power_all_disable();
 	if(num1==0) EICRA |= (1<<ISC00) | (1<<ISC01) | (1<<ISC10) | (1<<ISC11);
@@ -482,6 +482,14 @@ void SenseoUno::sleep(int num1=0, int num2=0){
 	SMCR |= (1<<SM1);
 	sei();
 	sleep_mode();
+	if(autoreset==0) ;
+	else if(autoreset==1) internal_reset();
+}
+
+void SenseoUno::internal_reset(){
+	cli(); // Disable all interrupts
+	wdt_enable(WDTO_15MS); // Set the watchdog timer to 15 milliseconds
+	while(1); // Open an infinite loop to generate a reset
 }
 
 /************************************************** PRIVATE FUNCTIONS **************************************************/

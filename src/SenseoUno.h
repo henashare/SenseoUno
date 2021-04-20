@@ -15,6 +15,8 @@
 #include <Arduino.h>
 #include <avr/sleep.h>
 #include <avr/power.h>
+#include <avr/interrupt.h>
+#include <avr/wdt.h>
 
 // Pin mapping for Arduino UNO
 #ifndef D0
@@ -138,9 +140,12 @@
 #define SENSEO_FALLING	1
 #define SENSEO_CHANGE	2
 #define SENSEO_LOW	3
+#define WAKE_UP	0
 #define WAKE_UP_1	0
 #define WAKE_UP_2	1
 #define WAKE_UP_3	2
+#define NO_RESET 0
+#define AUTO_RESET 1
 
 class SenseoUno{
 	public:
@@ -259,6 +264,8 @@ class SenseoUno{
 		
 		// Public function made to be used in the .ino sketch --> made to activate / start the sleep mode of the SenseoUno. Its configuration is determined by the upper defined macros
 		void sleep(int num1=0, int num2=0);
+		// Public function made to be used in the .ino sketch --> made to activate an internal reset within the SenseoUno instance. It allows to restart the whole program
+		void internal_reset();
 		
 		// Public function to be used in the .ino sketch --> made to init the UART communication to the specified baudrate
 		void begin(int baudrate, long freq=16000000);
