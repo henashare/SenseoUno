@@ -6,7 +6,7 @@
 <div align=justify>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'implémentation de la bibliothèque est disponible dans les fichiers sources : SenseoUno.h et SenseoUno.cpp.
 
-###Table des matières :
+### Table des matières :
 - [1. Déclarer l'instance de classe SenseoUno :](#1-déclarer-linstance-de-classe-senseouno-)
 - [2. Piloter une ledRGB, une simple led, ou trois leds en lieu et place d'une led RGB :](#2-piloter-une-ledrgb-une-simple-led-ou-trois-leds-en-lieu-et-place-dune-led-rgb-)
 - [3. Les boutons-poussoirs (BP) :](#3-les-boutons-poussoirs-bp-)
