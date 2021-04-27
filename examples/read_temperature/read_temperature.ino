@@ -40,6 +40,8 @@ void setup() {
                                                     // These attributes may vary between two NTC resistors.
                                                     // These attributes can be found in the datasheet of the component.
                                                     // Here these are the shield-based attributes (already set internally).
+                                                    // There is also a fourth argument set to 25 per default. This argument
+                                                    // is not obligatory as you can see. It must be an int value.
 }
 
 void loop() {
