@@ -191,6 +191,8 @@
 * *custom_settings.ino* | Illustre comment créer et configurer une instance vide de la classe SenseoUno.
 * *EEPROM.ino* | Montre comment écrire et lire dans la mémoire EEPROM avec une instance de la classe SenseoUno.
 * *ledRGB_PWM.ino* | Montre comment utiliser une led RGB en mode PWM.
+* *read_levels.ino* | Montre comment lire les états des capteurs de niveau d'eau.
+* *read_pushbuttons.ino* | Montre comment détecter l'appui sur un des boutons-poussoirs.
 * *read_temperature.ino* | Montre comment récupérer une valeur analogique en 10-bits sur un capteur analogique (comme par exemple un capteur de température).
 * *shield_settings.ino* | Illustre comment créer une instance de la classe SenseoUno basée sur le shield.
 * *single_chrono.ino* | Cet exemple montre comment déclarer, configurer et utiliser un chrono unique.
