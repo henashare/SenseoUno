@@ -5,12 +5,12 @@
 SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0)
 {
 	if(shieldOrNot == SHIELD_INSTANCE){
-		ledR = D9; ledG = D10; ledB = D11; pump = D6; heater = D5; lvl1 = D7; lvl2 = D8; Button1 = D2; Button2 = D4; ButtonC = D3; anaTemp = A0; RT0 = 10000.0; R0 = 10000.0; B = 4300.0
+		ledR = D9; ledG = D10; ledB = D11; pump = D6; heater = D5; lvl1 = D7; lvl2 = D8; Button1 = D2; Button2 = D4; ButtonC = D3; anaTemp = A0;
 		this->setAnalogRGB(ledR, ledG, ledB);
 		this->setPower(pump, heater);
 		this->setLevels(lvl1, lvl2);
 		this->set3Buttons(Button1, Button2, ButtonC);
-		this->setNTCvalues(RT0, R0, B);
+		this->setNTCvalues(10000.0, 10000.0, 4300.0);
 		this->setTempSensor(anaTemp);
 		this->get_cups();
 	}
@@ -22,13 +22,13 @@ SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0), EEPROM_addres
 
 /*SHIELD ARGUMENTLESS CONSTRUCTOR*/
 
-SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), lvl1(D7), lvl2(D8), Button1(D2), Button2(D4), ButtonC(D3), anaTemp(A0), PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0), RT0(10000.0), R0(10000.0), B(4300.0)
+SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), lvl1(D7), lvl2(D8), Button1(D2), Button2(D4), ButtonC(D3), anaTemp(A0), PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0)
 {
 	this->setAnalogRGB(ledR, ledG, ledB);
 	this->setPower(pump, heater);
 	this->setLevels(lvl1, lvl2);
 	this->set3Buttons(Button1, Button2, ButtonC);
-	this->setNTCvalues(RT0, R0, B);
+	this->setNTCvalues(10000.0, 10000.0, 4300.0);
 	this->setTempSensor(anaTemp);
 	this->get_cups();
 }
@@ -183,10 +183,9 @@ void SenseoUno::setTempSensor(short tempSens){
 
 void SenseoUno::setNTCvalues(float sensor_initial_resistor, float serial_resistor, float Beta, int initial_NTC_temperature=25){
 	RT0 = sensor_initial_resistor; // It is the 25 °C resistor value. This "initial" value is given in the datasheet
-	T0 = (initial_NTC_temperature + 273.15); // The initial temperature is always 25 °C, which we need to convert into a Kelvin temperature
+	T0 = (initial_NTC_temperature + 273.15); // The initial temperature is almost always 25 °C? Anyway we need to convert this temperature into a Kelvin temperature
 	R0 = serial_resistor; // The serial resistor is chosen by the user but it is recommended to set the same as the 25 °C resistor value of the resistor
 	B = Beta; // The Beta value is always given in the datasheet of the NTC resistor
-	T0 = initial_NTC_temperature; // The initial NTC temperature almost always 25 °C. Still, there is the possibility to set another initial temperature
 }
 
 /************************************************** READ FUNCTIONS **************************************************/

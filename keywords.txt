@@ -21,6 +21,7 @@ setHeat	KEYWORD2
 setLevels	KEYWORD2
 setLevel	KEYWORD2
 setTempSensor	KEYWORD2
+setNTCvalues	KEYWORD2
 readButton1C	KEYWORD2
 readButton2C	KEYWORD2
 readButtonMain	KEYWORD2
