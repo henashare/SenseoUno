@@ -526,24 +526,15 @@ void SenseoUno::setOutput(short *portnum, short *pin){
 }
 
 void SenseoUno::setInput(short *portnum, short *pin){
-	if ((*portnum) == 1){
-		DDRB &= ~(1<<(*pin));
-		PORTB |= (1<<(*pin));
-	}
-	else if ((*portnum) == 2){
-		DDRC &= ~(1<<(*pin));
-		PORTC |= (1<<(*pin));
-	}
-	else if ((*portnum) == 3){
-		DDRD &= ~(1<<(*pin));
-		PORTD |= (1<<(*pin));
-	}
+	if ((*portnum) == 1) DDRB &= ~(1<<(*pin));
+	else if ((*portnum) == 2) DDRC &= ~(1<<(*pin));
+	else if ((*portnum) == 3) DDRD &= ~(1<<(*pin));
 }
 
 bool SenseoUno::readDig(short *portnum, short *pin){
-	if((*portnum) == 1) return (!(PINB & (1<<(*pin))) != 0) ? 1 : 0;
-	else if((*portnum) == 2) return (!(PINC & (1<<(*pin))) != 0) ? 1 : 0;
-	else if((*portnum) == 3) return (!(PIND & (1<<(*pin))) != 0) ? 1 : 0;
+	if((*portnum) == 1) return (PINB & (1<<(*pin)));
+	else if((*portnum) == 2) return (PINC & (1<<(*pin)));
+	else if((*portnum) == 3) return (PIND & (1<<(*pin)));
 }
 
 void SenseoUno::activate(short *portnum, short *pin){
