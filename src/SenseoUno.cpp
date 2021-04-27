@@ -21,12 +21,13 @@ SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0), EEPROM_addres
 
 /*SHIELD ARGUMENTLESS CONSTRUCTOR*/
 
-SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), lvl1(D7), lvl2(D8), Button1(D2), Button2(D4), ButtonC(D3), anaTemp(A0), PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0)
+SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), lvl1(D7), lvl2(D8), Button1(D2), Button2(D4), ButtonC(D3), anaTemp(A0), PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0), RT0(10000.0), R0(10000.0), B(4300.0)
 {
 	this->setAnalogRGB(ledR, ledG, ledB);
 	this->setPower(pump, heater);
 	this->setLevels(lvl1, lvl2);
 	this->set3Buttons(Button1, Button2, ButtonC);
+	this->setNTCvalues(10000.0, 10000.0, 4300.0);
 	this->setTempSensor(anaTemp);
 	this->get_cups();
 }
@@ -179,6 +180,13 @@ void SenseoUno::setTempSensor(short tempSens){
 	 */
 }
 
+void SenseoUno::setNTCvalues(float sensor_initial_resistor, float serial_resistor, float Beta, int initial_NTC_temperature=25){
+	RT0 = sensor_initial_resistor; // It is the 25 °C resistor value. This "initial" value is given in the datasheet
+	T0 = (initial_NTC_temperature + 273.15); // The initial temperature is always 25 °C, which we need to convert into a Kelvin temperature
+	R0 = serial_resistor; // The serial resistor is chosen by the user but it is recommended to set the same as the 25 °C resistor value of the resistor
+	B = Beta; // The Beta value is always given in the datasheet of the NTC resistor
+}
+
 /************************************************** READ FUNCTIONS **************************************************/
 
 bool SenseoUno::readButton1C(){
@@ -225,6 +233,13 @@ float SenseoUno::readAnalogTemp(){
 	return tempValue; // We return the 10 bits value
 }
 
+void SenseoUno::readAnalogTemp(float &tempValue){
+	ADCSRA |= (1<<ADSC); // We set the ADSC bit to 1 in order to begin the conversion
+	while(ADCSRA & (1<<ADSC)); // While the conversion is not finished, nothing happens
+	tempValue = ADCL | (ADCH<<8); // Once the conversion is done, we read the two analog data registers ADCL and ADCH that are together a 10-bits value
+	// Note : the ADCH is shifted 8 bits on the left, because the first 8 bits are reserved to the ADCL bits
+}
+
 void SenseoUno::readAnalogTemp(int &tempValue){
 	ADCSRA |= (1<<ADSC); // We set the ADSC bit to 1 in order to begin the conversion
 	while(ADCSRA & (1<<ADSC)); // While the conversion is not finished, nothing happens
@@ -233,11 +248,22 @@ void SenseoUno::readAnalogTemp(int &tempValue){
 	tempValue = (int) temp;
 }
 
-void SenseoUno::readAnalogTemp(float &tempValue){
-	ADCSRA |= (1<<ADSC); // We set the ADSC bit to 1 in order to begin the conversion
-	while(ADCSRA & (1<<ADSC)); // While the conversion is not finished, nothing happens
-	tempValue = ADCL | (ADCH<<8); // Once the conversion is done, we read the two analog data registers ADCL and ADCH that are together a 10-bits value
-	// Note : the ADCH is shifted 8 bits on the left, because the first 8 bits are reserved to the ADCL bits
+float SenseoUno::readTemp(){
+	float analogTemp = this->readAnalogTemp();
+	float temperature = (1 / ((1/T0) + ((1/B)*log((R0/RT0)* ((1024.0/analogTemp)-1))))) - 273.15;
+	return temperature;
+}
+
+void SenseoUno::readTemp(float &tempValue){
+	float analogTemp = this->readAnalogTemp();
+	tempValue = (1 / ((1/T0) + ((1/B)*log((R0/RT0)* ((1024.0/analogTemp)-1))))) - 273.15;
+}
+
+void SenseoUno::readTemp(int &tempValue){
+	float analogTemp = this->readAnalogTemp();
+	float ATemp = ((1 / ((1/T0) + ((1/B)*log((R0/RT0)* ((1024.0/analogTemp)-1))))) - 273.15);
+	if((int)(ATemp + 0.5) > (int)ATemp) ATemp += 1; // This line is made to round the value to the upper number if the "after comma value" is between X.5 and X.99
+	tempValue = (int) ATemp;
 }
 
 /************************************************** ACTIVATE / SHUTDOWN FUNCTIONS **************************************************/

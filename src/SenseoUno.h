@@ -17,6 +17,7 @@
 #include <avr/power.h>
 #include <avr/interrupt.h>
 #include <avr/wdt.h>
+#include <math.h>
 
 // Pin mapping for Arduino UNO
 #ifndef D0
@@ -179,6 +180,8 @@ class SenseoUno{
 		
 		// Public function made to be used in the .ino sketch --> made to configure one analog pin as an analog input.
 		void setTempSensor(short tempSens);
+		// Public function made to be used in the .ino sketch --> made to set the values of the NTC resistor
+		void setNTCvalues(float sensor_initial_resistor, float serial_resistor, float Beta, int initial_NTC_temperature=25);
 		
 		// Public functions made to be used in the .ino sketch --> made to read the digital input state of one of the button
 		bool readButton1C();
@@ -195,6 +198,12 @@ class SenseoUno{
 		float readAnalogTemp();
 		void readAnalogTemp(float &tempValue);
 		void readAnalogTemp(int &tempValue);
+		
+		// Public function made to be used in the .ino sketch --> made to read the value of the temperature from the NTC sensor
+		/* Note : this function is overload, which means there are multiple ways to call this function and multiple types */
+		float readTemp();
+		void readTemp(float &tempValue);
+		void readTemp(int &tempValue);
 		
 		// Public function made to be used in the .ino sketch --> made to activate the pump
 		void activatePump();
@@ -274,6 +283,7 @@ class SenseoUno{
 		short ledR, ledG, ledB, pump, heater, lvl1, lvl2, Button1, Button2, ButtonC, anaTemp, PWM0, PWM1, PWM2;
 		int counter1, counter2, EEPROM_value;
 		unsigned int EEPROM_address;
+		float RT0, R0, B, T0;
 
 		// Private function linked to two other private functions : toRegisterB() and toRegisterC() --> This function is made to determine the right port and therefore the right registers to call for digital use.
 		short whichPort(short *num);

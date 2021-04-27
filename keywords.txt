@@ -28,6 +28,7 @@ readLvl	KEYWORD2
 readLvl1	KEYWORD2
 readLvl2	KEYWORD2
 readAnalogTemp	KEYWORD2
+readTemp	KEYWORD2
 activatePump	KEYWORD2
 shutdownPump	KEYWORD2
 activateHeat	KEYWORD2
