@@ -186,6 +186,7 @@ void SenseoUno::setNTCvalues(float sensor_initial_resistor, float serial_resisto
 	T0 = (initial_NTC_temperature + 273.15); // The initial temperature is always 25 °C, which we need to convert into a Kelvin temperature
 	R0 = serial_resistor; // The serial resistor is chosen by the user but it is recommended to set the same as the 25 °C resistor value of the resistor
 	B = Beta; // The Beta value is always given in the datasheet of the NTC resistor
+	T0 = initial_NTC_temperature; // The initial NTC temperature almost always 25 °C. Still, there is the possibility to set another initial temperature
 }
 
 /************************************************** READ FUNCTIONS **************************************************/
