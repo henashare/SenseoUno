@@ -184,43 +184,37 @@ void SenseoUno::setTempSensor(short tempSens){
 bool SenseoUno::readButton1C(){
 	short pin = Button1;
 	short port = whichPort(&pin);
-	bool result = readDig(&port, &pin);
-	return result;
+	return readDig(&port, &pin);
 }
 
 bool SenseoUno::readButton2C(){
 	short pin = Button2;
 	short port = whichPort(&pin);
-	bool result = readDig(&port, &pin);
-	return result;
+	return readDig(&port, &pin);
 }
 
 bool SenseoUno::readButtonMain(){
 	short pin = ButtonC;
 	short port = whichPort(&pin);
-	bool result = readDig(&port, &pin);
-	return result;
+	return readDig(&port, &pin);
 }
 
 bool SenseoUno::readLvl(){
 	short pin = lvl1;
 	short port = whichPort(&pin);
-	bool result = readDig(&port, &pin);
-	return result;
+	return readDig(&port, &pin);
 }
 
 bool SenseoUno::readLvl1(){
 	short pin = lvl1;
 	short port = whichPort(&pin);
-	bool result = readDig(&port, &pin);
-	return result;
+	return readDig(&port, &pin);
 }
 
 bool SenseoUno::readLvl2(){
 	short pin = lvl2;
 	short port = whichPort(&pin);
-	bool result = readDig(&port, &pin);
-	return result;
+	return readDig(&port, &pin);
 }
 
 float SenseoUno::readAnalogTemp(){
@@ -547,18 +541,9 @@ void SenseoUno::setInput(short *portnum, short *pin){
 }
 
 bool SenseoUno::readDig(short *portnum, short *pin){
-	if((*portnum) == 1){
-		if(!(PINB & (1<<(*pin))) != 0) return 1;
-		else return 0;
-	}
-	else if((*portnum) == 2){
-		if(!(PINC & (1<<(*pin))) != 0) return 1;
-		else return 0;
-	}
-	else if((*portnum) == 3){
-		if(!(PIND & (1<<(*pin))) != 0) return 1;
-		else return 0;
-	}
+	if((*portnum) == 1) return (!(PINB & (1<<(*pin))) != 0) ? 1 : 0;
+	else if((*portnum) == 2) return (!(PINC & (1<<(*pin))) != 0) ? 1 : 0;
+	else if((*portnum) == 3) return (!(PIND & (1<<(*pin))) != 0) ? 1 : 0;
 }
 
 void SenseoUno::activate(short *portnum, short *pin){
