@@ -193,7 +193,8 @@
 * *ledRGB_PWM.ino* | Montre comment utiliser une led RGB en mode PWM.
 * *read_levels.ino* | Montre comment lire les états des capteurs de niveau d'eau.
 * *read_pushbuttons.ino* | Montre comment détecter l'appui sur un des boutons-poussoirs.
-* *read_temperature.ino* | Montre comment récupérer une valeur analogique en 10-bits sur un capteur analogique (comme par exemple un capteur de température).
+* *read_analog_temperature.ino* | Montre comment récupérer une valeur analogique en 10-bits sur un capteur analogique (comme par exemple un capteur de température).
+* *read_temperature.ino* | Montre comment récupérer une valeur de température sur une résistance NTC.
 * *shield_settings.ino* | Illustre comment créer une instance de la classe SenseoUno basée sur le shield.
 * *single_chrono.ino* | Cet exemple montre comment déclarer, configurer et utiliser un chrono unique.
 * *two_chronos.ino* | Cet exemple montre comment déclarer, configurer et utiliser les deux chronos de la librairie.
