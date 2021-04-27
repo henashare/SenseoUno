@@ -5,11 +5,12 @@
 SenseoUno::SenseoUno(bool shieldOrNot): PWM0(0), PWM1(0), PWM2(0), EEPROM_address(0)
 {
 	if(shieldOrNot == SHIELD_INSTANCE){
-		ledR = D9; ledG = D10; ledB = D11; pump = D6; heater = D5; lvl1 = D7; lvl2 = D8; Button1 = D2; Button2 = D4; ButtonC = D3; anaTemp = A0;
+		ledR = D9; ledG = D10; ledB = D11; pump = D6; heater = D5; lvl1 = D7; lvl2 = D8; Button1 = D2; Button2 = D4; ButtonC = D3; anaTemp = A0; RT0 = 10000.0; R0 = 10000.0; B = 4300.0
 		this->setAnalogRGB(ledR, ledG, ledB);
 		this->setPower(pump, heater);
 		this->setLevels(lvl1, lvl2);
 		this->set3Buttons(Button1, Button2, ButtonC);
+		this->setNTCvalues(RT0, R0, B);
 		this->setTempSensor(anaTemp);
 		this->get_cups();
 	}
@@ -27,7 +28,7 @@ SenseoUno::SenseoUno() : ledR(D9), ledG(D10), ledB(D11), pump(D6), heater(D5), l
 	this->setPower(pump, heater);
 	this->setLevels(lvl1, lvl2);
 	this->set3Buttons(Button1, Button2, ButtonC);
-	this->setNTCvalues(10000.0, 10000.0, 4300.0);
+	this->setNTCvalues(RT0, R0, B);
 	this->setTempSensor(anaTemp);
 	this->get_cups();
 }
