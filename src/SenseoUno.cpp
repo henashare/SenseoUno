@@ -217,7 +217,7 @@ bool SenseoUno::readLvl1(){
 }
 
 bool SenseoUno::readLvl2(){
-	short pin = lvl1;
+	short pin = lvl2;
 	short port = whichPort(&pin);
 	bool result = readDig(&port, &pin);
 	return result;
