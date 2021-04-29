@@ -182,9 +182,9 @@ void SenseoUno::setTempSensor(short tempSens){
 }
 
 void SenseoUno::setNTCvalues(float sensor_initial_resistor, float serial_resistor, float Beta, int initial_NTC_temperature=25){
-	RT0 = sensor_initial_resistor; // It is the 25 °C resistor value. This "initial" value is given in the datasheet
-	T0 = (initial_NTC_temperature + 273.15); // The initial temperature is almost always 25 °C? Anyway we need to convert this temperature into a Kelvin temperature
-	R0 = serial_resistor; // The serial resistor is chosen by the user but it is recommended to set the same as the 25 °C resistor value of the resistor
+	RT0 = sensor_initial_resistor; // It is the 25 Â°C resistor value. This "initial" value is given in the datasheet
+	T0 = (initial_NTC_temperature + 273.15); // The initial temperature is almost always 25 Â°C? Anyway we need to convert this temperature into a Kelvin temperature
+	R0 = serial_resistor; // The serial resistor is chosen by the user but it is recommended to set the same as the 25 Â°C resistor value of the resistor
 	B = Beta; // The Beta value is always given in the datasheet of the NTC resistor
 }
 
@@ -361,7 +361,7 @@ void SenseoUno::shutdownB(){
 /***** ANALOG RGB LED *****/
 void SenseoUno::analogWriteRGB(short R, short G, short B){
 	// Before all, if R, G and B are 0, let's shutdown the RGB.
-	if((R==0) && (G==0) && (B==0)) analogShutdownRGB();
+	if((R==0) && (G==0) && (B==0)){ resetPWM0(); resetPWM1(); resetPWM2();	return;}
 	//First, let's reset all the compare values of the registers
 	resetPWM0(); resetPWM1(); resetPWM2();	
 	//Then, declare a list of 6 elements : the first 3 elements are the PWM 8-bits values, the last 3 elements are the associated pin number of the led.
