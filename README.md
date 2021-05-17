@@ -17,7 +17,7 @@
 - [7. La communication série, par exemple pour un module Bluetooth](#7-la-communication-série-par-exemple-pour-un-module-bluetooth-)
 - [8. Le ou les chronos](#8-le-ou-les-chronos-)
 - [9. La mise en veille](#9-la-mise-en-veille-)
-- [10. L'écriture en mémoire EEPROM et le cas de première utilisation](#10-lécriture-en-mémoire-eeprom-)
+- [10. L'écriture en mémoire EEPROM et le cas de première utilisation](#10-lécriture-en-mémoire-eeprom-et-le-cas-de-première-utilisation-)
 - [11. La liste des sketches d'exemple](#11-la-liste-des-sketches-dexemple-)
 
 ### Introduction :
