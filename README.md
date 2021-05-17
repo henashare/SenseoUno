@@ -17,7 +17,7 @@
 - [7. La communication série, par exemple pour un module Bluetooth](#7-la-communication-série-par-exemple-pour-un-module-bluetooth-)
 - [8. Le ou les chronos](#8-le-ou-les-chronos-)
 - [9. La mise en veille](#9-la-mise-en-veille-)
-- [10. L'écriture en mémoire EEPROM](#10-lécriture-en-mémoire-eeprom-)
+- [10. L'écriture en mémoire EEPROM et le cas de première utilisation](#10-lécriture-en-mémoire-eeprom-)
 - [11. La liste des sketches d'exemple](#11-la-liste-des-sketches-dexemple-)
 
 ### Introduction :
@@ -182,7 +182,7 @@
 | /                    | NO_RESET                             | Méthode *Senseo*.sleep(), troisième argument | N'active pas le reset à la sortie du mode veille          |
 | /                    | AUTO_RESET                           | Méthode *Senseo*.sleep(), troisième argument | Active le reset à la sortie du mode veille                |
 
-### 10. L'écriture en mémoire EEPROM :
+### 10. L'écriture en mémoire EEPROM et le cas de première utilisation :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'écriture en mémoire EEPROM permet de conserver des informations même lorsque le microcontrôleur n'est plus alimenté. Elle peut être utile notamment pour conserver en mémoire le nombre de cycles exécutés depuis le dernier détartrage. On peut alors fixer une valeur à partir de laquelle on informera l'utilisateur qu'il est temps de lancer un cycle de détartrage. Pour l'écriture en EEPROM, on suppose qu'il n'est pas nécessaire d'avoir des fonctionnalités très avancées. Aussi proposons-nous des méthodes basiques pour la lecture, l'écriture et l'adressage. Elles sont au nombre de quatre :
 * *Senseo*.set_memory_address(adresse) | Permet de fixer l'adresse à laquelle on va se rendre pour lire et/ou écrire un octet (donc une valeur comprise entre 0 et 255). Chaque instance de type SenseoUno a une adresse par défaut qui vaut 0. Si cette adresse convient à l'utilisateur et qu'il n'a besoin que d'un seul octet de donnée, il n'aura jamais besoin d'utiliser cette méthode.
 * *Senseo*.get_memory_address() | Permet de récupérer l'adresse actuelle utilisée pour la lecture / écriture en EEPROM.
