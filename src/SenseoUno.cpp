@@ -457,7 +457,8 @@ void SenseoUno::stopChrono(){
 
 /***** EEPROM MEMORY *****/
 void SenseoUno::set_memory_address(int address){
-	if((address >= 0) && (address < 1024)) EEPROM_address = (unsigned int)address; // If the address value is coherent, we will store in the SenseoUno attribute EEPROM_address the value of address given as an argument
+	if((address >= 0) && (address < 1023)) EEPROM_address = (unsigned int)address; // If the address value is coherent, we will store in the SenseoUno attribute EEPROM_address the value of address given as an argument
+																				   // Note that the 1023 address is reserved for the SenseoUno::is_new() method.
 }
 
 int SenseoUno::get_memory_address(){
@@ -467,9 +468,9 @@ int SenseoUno::get_memory_address(){
 void SenseoUno::save_cups(unsigned int num){
 	// The value must be between 0 and 255
 	if((num >= 0) && (num < 256)){
-		while(EECR & (1<<EEPE)) ; // Then, wait until the last writing is over
+		while(EECR & (1<<EEPE)) ; // If a writing is in progress we will wait until the last writing is over
 		EEDR = num; // The value to be written in the EEPROM memory is the value given as first argument of this method
-		EEAR = EEPROM_address; // The address is given as second argument of this method. If no address is given, there a default address set to 0
+		EEAR = EEPROM_address; // The address is given with the SenseoUno::set_memory_address() method. There is a default address set to 0
 		EECR |= (1<<EEMPE); // First step to activate the EEPROM writing
 		EECR |= (1<<EEPE); // Second step to activate the EEPROM writing
 	}
@@ -486,8 +487,23 @@ int SenseoUno::get_cups(){
 	return EEPROM_value; // Finally return as an integer the data taken from the EEPROM memory
 }
 
+bool SenseoUno::is_new(){
+	unsigned int t_EEPROM = EEPROM_address; // temporary variable to receive the value of the current EEPROM address (the address will be restored at the end of this method)
+	EEPROM_address = 1023; // This is a reserved address to check if the Senseo machine has already been used or not
+	int v_EEPROM = get_cups(); // Let's get the value stored in the EEPROM address
+	EEPROM_address = t_EEPROM; // Then we restore the initial EEPROM address before leaving this method
+	return (v_EEPROM == 255) ? 1 : 0; // If the value is 255 then the machine has never been used so we return 1 / true. Else we return 0 / false
+}
+
+void SenseoUno::unblock(){
+	unsigned int t_EEPROM = EEPROM_address; // temporary variable to receive the value of the current EEPROM address (the address will be restored at the end of this method)
+	EEPROM_address = 1023; // This is a reserved address to check if the Senseo machine has already been used or not
+	save_cups(1); // In the reserved address, we will write a 1 value (note that the value could be anything between 0 and 254)
+	EEPROM_address = t_EEPROM; // Then we restore the initial EEPROM address before leaving this method
+}
+
 /***** SLEEP *****/
-void SenseoUno::sleep(int num1=0, int num2=0, bool autoreset=0){
+void SenseoUno::sleep(int num1=0, int num2=0, bool autoreset=1){
 	cli();
 	power_all_disable();
 	if(num1==0) EICRA |= (1<<ISC00) | (1<<ISC01) | (1<<ISC10) | (1<<ISC11);

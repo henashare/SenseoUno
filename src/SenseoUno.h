@@ -270,9 +270,13 @@ class SenseoUno{
 		void save_cups(unsigned int num);
 		// Public function made to be used in the .ino sketch --> made to read a value in the EEPROM memory corresponding to the number of cups made since last descaling
 		int get_cups();
+		// Public function made to be used in the .ino sketch --> made to determine if the machine has already been used by reading the value of the byte in the EEPROM memory address
+		bool is_new();
+		// Public function made to be used in the .ino sketch --> made to write a value between 0 and 254 in the reserved EEPROM memory in order to allow the regular use of the Senseo machine
+		void unblock();
 		
 		// Public function made to be used in the .ino sketch --> made to activate / start the sleep mode of the SenseoUno. Its configuration is determined by the upper defined macros
-		void sleep(int num1=0, int num2=0, bool autoreset=0);
+		void sleep(int num1=0, int num2=0, bool autoreset=1);
 		// Public function made to be used in the .ino sketch --> made to activate an internal reset within the SenseoUno instance. It allows to restart the whole program
 		void internal_reset();
 		

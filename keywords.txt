@@ -64,6 +64,8 @@ save_cups	KEYWORD2
 get_cups	KEYWORD2
 sleep	KEYWORD2
 internal_reset	KEYWORD2
+is_new	KEYWORD2
+unblock	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
