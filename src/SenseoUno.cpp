@@ -164,7 +164,7 @@ void SenseoUno::setTempSensor(short tempSens){
 	else if(port == 2 && tempSens == 3) {ADMUX &= ~(1<<MUX2) | ~(1<<MUX3); ADMUX |= (1<<MUX0) | (1<<MUX1);}
 	else if(port == 2 && tempSens == 4) {ADMUX &= ~(1<<MUX0) | ~(1<<MUX1) | ~(1<<MUX3); ADMUX |= (1<<MUX2);}
 	else if(port == 2 && tempSens == 5) {ADMUX &= ~(1<<MUX1) | ~(1<<MUX3); ADMUX |= (1<<MUX0) | (1<<MUX2);}
-	else ; // If there is no analog pin, leave the function without configuring the analog converter
+	else return; // If there is no analog pin, leave the function without configuring the analog converter
 	ADMUX &= ~(1<<REFS1) | ~(1<<ADLAR);
 	ADMUX |= (1<<REFS0);
 	ADCSRA |= (1<<ADEN) | (1<<ADPS0) | (1<< ADPS1) | (1<< ADPS2);
